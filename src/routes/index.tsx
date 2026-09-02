@@ -127,9 +127,9 @@ function Index() {
               />
             </div>
 
-            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full bg-accent/80 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-ink ring-1 ring-amber/40">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-deep" />
-              Early access
+            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full bg-accent/80 px-3.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-ink ring-1 ring-amber/40 sm:text-[0.65rem]">
+              <span className="h-1 w-1 rounded-full bg-amber-deep" />
+              Get Early Access To Clockitt
             </div>
 
             <h1 className="rise-in text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl">

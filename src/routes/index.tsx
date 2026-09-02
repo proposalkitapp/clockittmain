@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Check, Flag, Sparkles, Users } from "lucide-react";
-import mascot from "@/assets/clockitt-icon.png";
+import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+import { supabase } from "@/integrations/supabase/client";
+
+const mascot = mascotAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,10 +61,26 @@ function TikTokIcon() {
 function Index() {
   const [email, setEmail] = useState("");
   const [joined, setJoined] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!email.includes("@")) return;
+    const value = email.trim().toLowerCase();
+    if (!value.includes("@") || value.length > 255) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setSubmitting(true);
+    setError(null);
+    const { error: insertError } = await supabase
+      .from("waitlist_signups")
+      .insert({ email: value });
+    setSubmitting(false);
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
     setJoined(true);
   }
 
@@ -76,11 +95,16 @@ function Index() {
           <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
           <div className="hidden h-5 w-px bg-border sm:block" />
           <div className="flex items-center gap-2">
-            {[XIcon, TikTokIcon].map((Icon, i) => (
+            {[
+              { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },
+              { Icon: TikTokIcon, href: "https://tiktok.com/useclockittapp", label: "Clockitt on TikTok" },
+            ].map(({ Icon, href, label }) => (
               <a
-                key={i}
-                href="#waitlist"
-                aria-label={i === 0 ? "Clockitt on X" : "Clockitt on TikTok"}
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={label}
                 className="flex h-9 w-9 items-center justify-center rounded-full text-ink transition-all hover:-translate-y-0.5 hover:bg-accent"
               >
                 <Icon />
@@ -96,16 +120,16 @@ function Index() {
             <div className="rise-in float-soft mx-auto mb-6 w-fit">
               <img
                 src={mascot}
-                alt="Clockitt alarm clock mascot"
+                alt="Clockitt rooster mascot"
                 width={112}
                 height={112}
                 className="h-24 w-24 drop-shadow-[0_18px_30px_rgba(30,39,73,0.18)] sm:h-28 sm:w-28"
               />
             </div>
 
-            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full bg-accent/80 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-ink ring-1 ring-amber/40">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-deep" />
-              Early access
+            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full bg-accent/80 px-3.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-ink ring-1 ring-amber/40 sm:text-[0.65rem]">
+              <span className="h-1 w-1 rounded-full bg-amber-deep" />
+              Get Early Access To Clockitt
             </div>
 
             <h1 className="rise-in text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl">
@@ -116,8 +140,8 @@ function Index() {
             </h1>
 
             <p className="rise-in mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
-              Clockitt gives your goals a real place to land — gentle structure, shared
-              accountability, and the momentum to see every task through.
+              Clockitt is a productivity and accountability app that helps you wake up, set
+              daily goals, stay accountable, and actually finish what you start.
             </p>
 
             <div id="waitlist" className="mx-auto mt-9 max-w-xl scroll-mt-24">
@@ -147,12 +171,18 @@ function Index() {
                   />
                   <button
                     type="submit"
-                    className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                    disabled={submitting}
+                    className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70"
                   >
-                    Join the waitlist
+                    {submitting ? "Joining…" : "Join the waitlist"}
                     <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                   </button>
                 </form>
+              )}
+              {error && (
+                <p className="mt-3 text-sm font-medium text-destructive" role="alert">
+                  {error}
+                </p>
               )}
 
               <div className="mt-6 flex flex-col items-center gap-3">

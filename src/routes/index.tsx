@@ -171,12 +171,18 @@ function Index() {
                   />
                   <button
                     type="submit"
-                    className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                    disabled={submitting}
+                    className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70"
                   >
-                    Join the waitlist
+                    {submitting ? "Joining…" : "Join the waitlist"}
                     <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                   </button>
                 </form>
+              )}
+              {error && (
+                <p className="mt-3 text-sm font-medium text-destructive" role="alert">
+                  {error}
+                </p>
               )}
 
               <div className="mt-6 flex flex-col items-center gap-3">

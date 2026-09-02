@@ -9,17 +9,30 @@ const mascot = mascotAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clockitt — Finish what you start. Together." },
+      { title: "Clockitt — Accountability App to Finish What You Start" },
       {
         name: "description",
         content:
-          "Clockitt turns intentions into finished work: gentle structure, shared accountability, and the momentum to see every task through. Join the early access waitlist.",
+          "Clockitt is the accountability app that helps you wake up, set daily goals, stay accountable, and actually finish what you start. Join the early access waitlist.",
       },
-      { property: "og:title", content: "Clockitt — Finish what you start. Together." },
+      {
+        name: "keywords",
+        content:
+          "accountability app, productivity app, goal tracker, daily goals, habit accountability, Clockitt",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Clockitt — Accountability App to Finish What You Start" },
       {
         property: "og:description",
         content:
-          "Gentle structure, shared accountability, and the momentum to finish. Join the Clockitt waitlist.",
+          "The accountability app for waking up, setting daily goals, and actually finishing what you start. Join the Clockitt waitlist.",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Clockitt — Accountability App to Finish What You Start" },
+      {
+        name: "twitter:description",
+        content:
+          "The accountability app for waking up, setting daily goals, and actually finishing what you start. Join the Clockitt waitlist.",
       },
     ],
   }),

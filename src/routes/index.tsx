@@ -140,8 +140,8 @@ function Index() {
             </h1>
 
             <p className="rise-in mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
-              Clockitt gives your goals a real place to land — gentle structure, shared
-              accountability, and the momentum to see every task through.
+              Clockitt is a productivity and accountability app that helps you wake up, set
+              daily goals, stay accountable, and actually finish what you start.
             </p>
 
             <div id="waitlist" className="mx-auto mt-9 max-w-xl scroll-mt-24">

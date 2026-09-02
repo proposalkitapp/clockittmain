@@ -95,11 +95,16 @@ function Index() {
           <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
           <div className="hidden h-5 w-px bg-border sm:block" />
           <div className="flex items-center gap-2">
-            {[XIcon, TikTokIcon].map((Icon, i) => (
+            {[
+              { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },
+              { Icon: TikTokIcon, href: "https://tiktok.com/useclockittapp", label: "Clockitt on TikTok" },
+            ].map(({ Icon, href, label }) => (
               <a
-                key={i}
-                href="#waitlist"
-                aria-label={i === 0 ? "Clockitt on X" : "Clockitt on TikTok"}
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={label}
                 className="flex h-9 w-9 items-center justify-center rounded-full text-ink transition-all hover:-translate-y-0.5 hover:bg-accent"
               >
                 <Icon />

@@ -61,10 +61,26 @@ function TikTokIcon() {
 function Index() {
   const [email, setEmail] = useState("");
   const [joined, setJoined] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!email.includes("@")) return;
+    const value = email.trim().toLowerCase();
+    if (!value.includes("@") || value.length > 255) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setSubmitting(true);
+    setError(null);
+    const { error: insertError } = await supabase
+      .from("waitlist_signups")
+      .insert({ email: value });
+    setSubmitting(false);
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
     setJoined(true);
   }
 

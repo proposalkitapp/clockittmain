@@ -120,7 +120,7 @@ function Index() {
             <div className="rise-in float-soft mx-auto mb-6 w-fit">
               <img
                 src={mascot}
-                alt="Clockitt alarm clock mascot"
+                alt="Clockitt rooster mascot"
                 width={112}
                 height={112}
                 className="h-24 w-24 drop-shadow-[0_18px_30px_rgba(30,39,73,0.18)] sm:h-28 sm:w-28"

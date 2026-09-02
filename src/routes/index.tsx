@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Check, Flag, Sparkles, Users } from "lucide-react";
-import mascot from "@/assets/clockitt-icon.png";
+import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+import { supabase } from "@/integrations/supabase/client";
+
+const mascot = mascotAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

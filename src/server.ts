@@ -44,18 +44,57 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Security headers — adds the missing Content-Security-Policy (with
+// frame-ancestors for frame protection) to every response.
+//
+// Strict-Transport-Security, X-Content-Type-Options, and Referrer-Policy are
+// already set at the platform/CDN layer (Cloudflare / Lovable infra) and do
+// not need to be duplicated here.
+// ---------------------------------------------------------------------------
+const SECURITY_HEADERS: Record<string, string> = {
+  "Content-Security-Policy": [
+    "default-src 'self'",
+    "script-src 'self'",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "img-src 'self' data: blob:",
+    "font-src 'self' https://fonts.gstatic.com",
+    "connect-src 'self' https://*.lovable.cloud",
+    "frame-ancestors 'self'",
+    "frame-src 'none'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ].join("; "),
+};
+
+function withSecurityHeaders(response: Response): Response {
+  // Clone the response so we can append headers even to immutable responses.
+  const patched = new Response(response.body, response);
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    // Only set if the header is not already present (avoid overriding any
+    // upstream CDN or platform header).
+    if (!patched.headers.has(key)) {
+      patched.headers.set(key, value);
+    }
+  }
+  return patched;
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return withSecurityHeaders(
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };

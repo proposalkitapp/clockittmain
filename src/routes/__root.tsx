@@ -14,10 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="text-4xl font-extrabold text-foreground">404 — Page Not Found</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
@@ -30,7 +29,7 @@ function NotFoundComponent() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -42,7 +41,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
@@ -68,7 +67,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -77,7 +76,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Clockitt — Finish what you start. Together." },
       {
         name: "description",
         content:
@@ -112,6 +110,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <title>Clockitt — Accountability App to Finish What You Start</title>
         <HeadContent />
       </head>
       <body>

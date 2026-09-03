@@ -42,7 +42,10 @@ export function SiteFooter() {
               Accountability partner app
             </Link>
             <Link to="/privacy" className="text-ink-soft transition-colors hover:text-ink">
-              Privacy
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-ink-soft transition-colors hover:text-ink">
+              Terms of Service
             </Link>
           </nav>
         </div>

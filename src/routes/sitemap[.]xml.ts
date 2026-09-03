@@ -7,6 +7,7 @@ const routes = [
   { path: "/how-it-works", priority: "0.8", changefreq: "monthly" },
   { path: "/accountability-partner", priority: "0.8", changefreq: "monthly" },
   { path: "/privacy", priority: "0.3", changefreq: "monthly" },
+  { path: "/terms", priority: "0.3", changefreq: "monthly" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

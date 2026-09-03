@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { AlarmClock, Check, DollarSign, Eye, Lock, RefreshCw, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
@@ -215,6 +215,28 @@ function Index() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
+              <span className="text-ink-soft">Explore Clockitt:</span>
+              <Link
+                to="/how-it-works"
+                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+              >
+                How Clockitt works &rarr;
+              </Link>
+              <Link
+                to="/accountability-partner"
+                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+              >
+                Accountability partner app &rarr;
+              </Link>
+              <Link
+                to="/privacy"
+                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+              >
+                Privacy policy &rarr;
+              </Link>
             </div>
           </div>
         </section>

@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "How does the $5/month founder rate work?",
-    a: "Waitlist members receive a 3-day free trial and lock in $5/month pricing for life before public launch rates increase.",
+    a: "Waitlist members receive a 3-day free trial and lock in the $5/month rate during early access before public launch rates increase.",
   },
   {
     q: "Are my photos and data kept private?",
@@ -75,12 +75,12 @@ const trustSignals = [
   {
     icon: RefreshCw,
     title: "Risk-Free 3-Day Trial Guarantee",
-    copy: "Try Clockitt completely free for 3 days. Cancel anytime with 1 click before your trial ends and pay zero dollars.",
+    copy: "Try Clockitt with a 3-day free trial. Cancel anytime during your 3-day trial period with 1 click to pay zero dollars.",
   },
   {
     icon: Lock,
-    title: "Lifetime Founder Rate Guarantee",
-    copy: "Waitlist members lock in the $5/month founder rate permanently before the public launch price increase.",
+    title: "Early Access Founder Rate Guarantee",
+    copy: "Waitlist members lock in the $5/month early access rate before the public launch price increase.",
   },
 ];
 

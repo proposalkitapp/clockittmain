@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+import { ThemeToggle } from "./theme-toggle";
 
 const mascot = mascotAsset.url;
 
@@ -63,6 +64,7 @@ export function SiteHeader() {
         <div className="ml-auto h-px flex-1 bg-gradient-to-r from-border to-transparent md:ml-3 md:hidden" />
 
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          <ThemeToggle />
           {[
             { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },
             {

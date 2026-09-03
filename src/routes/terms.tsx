@@ -104,7 +104,7 @@ export function TermsSections() {
         <div className="space-y-3">
           <h3 className="text-base font-bold text-ink sm:text-lg">4.2 Paid Access</h3>
           <p>
-            After your free trial expires, continued access to Clockitt requires a one-time payment of USD $5.00 (Five US Dollars). This is a lifetime payment — you pay once and retain access to all current and future features indefinitely, with no recurring charges, subscriptions, or renewal fees.
+            After your free trial expires, continued access to Clockitt requires a one-time payment of USD $5.00 (Five US Dollars). This is a one-time early access payment — you pay once for access during the early access period, with no recurring subscription fees.
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export function TermsSections() {
         <div className="space-y-3">
           <h3 className="text-base font-bold text-ink sm:text-lg">4.4 Pricing Changes</h3>
           <p>
-            The $5.00 price applies to users who purchase during the current early access period. We reserve the right to change the price for new users at any time. Existing paid users will not be charged additional fees and will retain their lifetime access regardless of future pricing changes.
+            The $5.00 price applies to users who purchase during the current early access period. We reserve the right to change the price for new users at any time. Existing paid users will not be charged additional fees for their early access tier regardless of future pricing changes.
           </p>
         </div>
 

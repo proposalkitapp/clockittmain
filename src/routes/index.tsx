@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { AlarmClock, Check, DollarSign, Eye, HelpCircle, Lock, RefreshCw, ShieldCheck, Zap } from "lucide-react";
+import { AlarmClock, Camera, Check, DollarSign, Flame, HelpCircle, Lock, RefreshCw, ShieldCheck } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
@@ -61,8 +61,8 @@ export const Route = createFileRoute("/")({
 
 const pillars = [
   { icon: AlarmClock, title: "The alarm doesn’t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
-  { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can’t fake yesterday’s gym selfie." },
-  { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn’t a lie you tell yourself. Five levels, real momentum." },
+  { icon: Camera, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can’t fake yesterday’s gym selfie." },
+  { icon: Flame, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn’t a lie you tell yourself. Five levels, real momentum." },
   { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "$5/mo — For a coach that never lets you off the hook. Waitlist members get locked in before public launch." },
 ];
 
@@ -75,7 +75,7 @@ const trustSignals = [
   {
     icon: RefreshCw,
     title: "Risk-Free 3-Day Trial Guarantee",
-    copy: "Try Clockitt with a 3-day free trial. Cancel anytime during your 3-day trial period with 1 click to pay zero dollars.",
+    copy: "Try Clockitt with a 3-day free trial. Cancel anytime during your 3-day trial period",
   },
   {
     icon: Lock,
@@ -85,7 +85,7 @@ const trustSignals = [
 ];
 
 const proofMetrics = [
-  { label: "AI Verification", value: "Claude Vision" },
+  { label: "Photo Verification", value: "Claude Vision" },
   { label: "Encrypted Storage", value: "256-Bit SSL" },
   { label: "Trial Guarantee", value: "3 Days Free" },
   { label: "Founder Pricing", value: "$5/mo Locked" },

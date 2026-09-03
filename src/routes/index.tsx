@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { AlarmClock, Check, DollarSign, Eye, Sparkles, Users, Zap } from "lucide-react";
+import { AlarmClock, Check, DollarSign, Eye, Lock, RefreshCw, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { canonical, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
@@ -40,6 +40,24 @@ const pillars = [
   { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can\u2019t fake yesterday\u2019s gym selfie." },
   { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn\u2019t a lie you tell yourself. Five levels, real momentum." },
   { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "Cancel before day 3 and pay nothing. After that, $5/mo \u2014 less than a coffee for a coach that never lets you off the hook. Waitlist members lock in founder pricing before public launch." },
+];
+
+const trustSignals = [
+  {
+    icon: ShieldCheck,
+    title: "Privacy & Data Protection Guaranteed",
+    copy: "Your verification photos and goals are encrypted and never shared publicly without your explicit permission.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Zero Risk & Cancel Anytime",
+    copy: "Enjoy a 3-day free trial. Cancel anytime before your trial ends with 1 click and pay zero dollars.",
+  },
+  {
+    icon: Lock,
+    title: "Founder Rate Locked for Life",
+    copy: "Waitlist members secure $5/month pricing forever before the public launch price increase.",
+  },
 ];
 
 function Index() {
@@ -111,31 +129,37 @@ function Index() {
                   You're on the list. We'll wake you when it's time.
                 </div>
               ) : (
-                <form
-                  onSubmit={onSubmit}
-                  className="glass-panel flex flex-col gap-2 rounded-[1.75rem] p-2 transition-shadow focus-within:shadow-lift sm:flex-row sm:items-center"
-                >
-                  <label htmlFor="email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    className="min-w-0 flex-1 bg-transparent px-5 py-3.5 text-base text-ink outline-none placeholder:text-muted-foreground"
-                  />
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70"
+                <>
+                  <form
+                    onSubmit={onSubmit}
+                    className="glass-panel flex flex-col gap-2 rounded-[1.75rem] p-2 transition-shadow focus-within:shadow-lift sm:flex-row sm:items-center"
                   >
-                    {submitting ? "Joining…" : "Join the waitlist"}
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
-                  </button>
-                </form>
+                    <label htmlFor="email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      className="min-w-0 flex-1 bg-transparent px-5 py-3.5 text-base text-ink outline-none placeholder:text-muted-foreground"
+                    />
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70"
+                    >
+                      {submitting ? "Joining…" : "Join the waitlist"}
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
+                    </button>
+                  </form>
+                  <div className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
+                    <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
+                    <span>100% Privacy Protected &bull; Zero Spam Guarantee &bull; Cancel Anytime</span>
+                  </div>
+                </>
               )}
               {error && (
                 <p className="mt-3 text-sm font-medium text-destructive" role="alert">
@@ -173,6 +197,24 @@ function Index() {
                   <p className="mt-1 text-sm leading-relaxed text-ink-soft">{copy}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-14 glass-panel rounded-3xl p-6 sm:p-8 text-left">
+              <div className="mb-6 flex items-center gap-2">
+                <ShieldCheck className="h-5 w-5 text-ink" />
+                <h2 className="text-lg font-bold tracking-tight text-ink">Trust & Privacy Guarantee</h2>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-3">
+                {trustSignals.map(({ icon: Icon, title, copy }) => (
+                  <div key={title} className="flex flex-col gap-1.5">
+                    <div className="flex items-center gap-2 font-semibold text-sm text-ink">
+                      <Icon className="h-4 w-4 shrink-0 text-amber-deep" />
+                      <span>{title}</span>
+                    </div>
+                    <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

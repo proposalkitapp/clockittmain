@@ -27,7 +27,7 @@ export const Route = createFileRoute("/accountability-partner")({
       { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
     ],
   }),
-  component: AccountabilityPartner;
+  component: AccountabilityPartner,
 });
 
 const features = [

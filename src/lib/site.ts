@@ -81,3 +81,19 @@ export const webSiteLd = {
     "Clockitt is an accountability app that turns a morning alarm into photo-verified goal completions.",
 };
 
+export function faqLd(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+}
+
+

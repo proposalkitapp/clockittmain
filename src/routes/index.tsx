@@ -1,13 +1,32 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { AlarmClock, Check, DollarSign, Eye, Lock, RefreshCw, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
+import { AlarmClock, Check, DollarSign, Eye, HelpCircle, Lock, RefreshCw, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
-import { canonical, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
+import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 const mascot = mascotAsset.url;
+
+const faqs = [
+  {
+    q: "How does photo proof verification work?",
+    a: "When your alarm fires at your deadline, you take a quick photo of your finished task. Claude Vision AI verifies it matches your committed goal before silencing the alarm.",
+  },
+  {
+    q: "What happens if I fail to submit proof?",
+    a: "The alarm keeps firing until valid proof is submitted. Silence is earned, eliminating the temptation to snooze past your commitments.",
+  },
+  {
+    q: "How does the $5/month founder rate work?",
+    a: "Waitlist members receive a 3-day free trial and lock in $5/month pricing for life before public launch rates increase.",
+  },
+  {
+    q: "Are my photos and data kept private?",
+    a: "Yes. All verification photos and goals are encrypted and private. Your data is never shared publicly or sold.",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,6 +48,7 @@ export const Route = createFileRoute("/")({
       { type: "application/ld+json", children: JSON.stringify(organizationLd) },
       { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
       { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
+      { type: "application/ld+json", children: JSON.stringify(faqLd(faqs)) },
     ],
   }),
 
@@ -220,6 +240,28 @@ function Index() {
                       <span>{title}</span>
                     </div>
                     <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-14 text-left">
+              <div className="mb-6 text-center">
+                <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <p className="mt-2 text-sm text-ink-soft">
+                  Everything you need to know about Clockitt early access.
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {faqs.map(({ q, a }) => (
+                  <div key={q} className="glass-panel rounded-3xl p-5">
+                    <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1.5">
+                      <HelpCircle className="h-4 w-4 shrink-0 text-amber-deep" />
+                      <h3>{q}</h3>
+                    </div>
+                    <p className="text-xs leading-relaxed text-ink-soft">{a}</p>
                   </div>
                 ))}
               </div>

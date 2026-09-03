@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { Check, Flag, Sparkles, Users } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
-import { canonical } from "@/lib/site";
+import { canonical, organizationLd, softwareAppLd } from "@/lib/site";
 
 const mascot = mascotAsset.url;
 
@@ -37,6 +37,10 @@ export const Route = createFileRoute("/")({
       },
     ],
     links: canonical("/"),
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(organizationLd) },
+      { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
+    ],
   }),
 
   component: Index,

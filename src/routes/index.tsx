@@ -205,7 +205,7 @@ function Index() {
                   ))}
                 </div>
                 <p className="text-sm text-ink-soft">
-                  Early access — <strong>first 100 get founder pricing</strong>, locked for life.
+                  Get early access to be strictly timed and locked in.
                 </p>
               </div>
 

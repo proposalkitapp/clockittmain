@@ -1,11 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { AlarmClock, Check, DollarSign, Eye, HelpCircle, Lock, RefreshCw, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+import { AlarmClock, Check, DollarSign, Eye, HelpCircle, Lock, RefreshCw, ShieldCheck, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { TiltCard } from "@/components/ui/tilt-card";
+import { Floating3DMascot } from "@/components/ui/floating-3d-mascot";
+import { Alarm3DBadge } from "@/components/ui/alarm-3d-badge";
 
 const mascot = mascotAsset.url;
 
@@ -56,10 +60,10 @@ export const Route = createFileRoute("/")({
 });
 
 const pillars = [
-  { icon: AlarmClock, title: "The alarm doesn\u2019t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
-  { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can\u2019t fake yesterday\u2019s gym selfie." },
-  { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn\u2019t a lie you tell yourself. Five levels, real momentum." },
-  { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "$5/mo \u2014 For a coach that never lets you off the hook. Waitlist members get locked in before public launch." },
+  { icon: AlarmClock, title: "The alarm doesn’t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
+  { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can’t fake yesterday’s gym selfie." },
+  { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn’t a lie you tell yourself. Five levels, real momentum." },
+  { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "$5/mo — For a coach that never lets you off the hook. Waitlist members get locked in before public launch." },
 ];
 
 const trustSignals = [
@@ -114,74 +118,91 @@ function Index() {
   }
 
   return (
-    <div className="canvas-gradient min-h-screen text-ink flex flex-col">
+    <div className="canvas-gradient min-h-screen text-ink flex flex-col overflow-x-hidden">
       <SiteHeader />
 
-      <main className="flex-1">
-        <section className="relative overflow-hidden px-5 pb-20 pt-14 sm:px-8 sm:pt-20">
+      <main id="main-content" className="flex-1">
+        <section className="relative overflow-hidden px-5 pb-20 pt-10 sm:px-8 sm:pt-16">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="rise-in float-soft mx-auto mb-6 w-fit">
-              <img
-                src={mascot}
-                alt="Clockitt rooster mascot"
-                width={112}
-                height={112}
-                className="h-24 w-24 drop-shadow-[0_18px_30px_rgba(30,39,73,0.18)] sm:h-28 sm:w-28"
-              />
+            
+            {/* Interactive 3D Mascot Floating Hero */}
+            <div className="mx-auto mb-6 w-fit">
+              <Floating3DMascot src={mascot} alt="Clockitt rooster mascot" />
             </div>
 
-            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full bg-accent/80 px-3.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-ink ring-1 ring-amber/40 sm:text-[0.65rem]">
-              <span className="h-1 w-1 rounded-full bg-amber-deep" />
-              Get Early Access To Clockitt
+            {/* 3D Glass Badge */}
+            <div className="mb-6 inline-block">
+              <Alarm3DBadge>Get Early Access To Clockitt</Alarm3DBadge>
             </div>
 
-            <h1 className="rise-in text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl">
+            {/* Hero Main Heading with Entrance Animation */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl"
+            >
               The alarm that won&rsquo;t shut up{" "}
               <span className="bg-gradient-to-br from-amber to-amber-deep bg-clip-text text-transparent">
                 until you prove it.
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="rise-in mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
+            >
               Set a goal, set a deadline. When the alarm fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong>. No proof, no silence.
-            </p>
+            </motion.p>
 
-            <div id="waitlist" className="mx-auto mt-9 max-w-xl scroll-mt-24">
+            <motion.div
+              id="waitlist"
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="mx-auto mt-9 max-w-xl scroll-mt-24"
+            >
               {joined ? (
-                <div className="glass-panel flex items-center justify-center gap-3 rounded-3xl px-6 py-5 text-sm font-semibold">
+                <TiltCard className="flex items-center justify-center gap-3 py-5 text-sm font-semibold">
                   <span className="flex h-7 w-7 items-center justify-center rounded-full cta-gradient text-primary-foreground">
                     <Check className="h-4 w-4" />
                   </span>
                   You're on the list. We'll wake you when it's time.
-                </div>
+                </TiltCard>
               ) : (
                 <>
-                  <form
-                    onSubmit={onSubmit}
-                    className="glass-panel flex flex-col gap-2 rounded-[1.75rem] p-2 transition-shadow focus-within:shadow-lift sm:flex-row sm:items-center"
-                  >
-                    <label htmlFor="email" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email address"
-                      className="min-w-0 flex-1 bg-transparent px-5 py-3.5 text-base text-ink outline-none placeholder:text-muted-foreground"
-                    />
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70"
+                  <TiltCard tiltDegree={8} className="p-2 sm:p-3">
+                    <form
+                      onSubmit={onSubmit}
+                      className="flex flex-col gap-2 sm:flex-row sm:items-center"
                     >
-                      {submitting ? "Joining…" : "Join the waitlist"}
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
-                    </button>
-                  </form>
-                  <div className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
+                      <label htmlFor="email" className="sr-only">
+                        Email address
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address"
+                        className="min-w-0 flex-1 bg-transparent px-5 py-3.5 text-base text-ink outline-none placeholder:text-muted-foreground"
+                      />
+                      <motion.button
+                        type="submit"
+                        disabled={submitting}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-all disabled:opacity-70"
+                      >
+                        {submitting ? "Joining…" : "Join the waitlist"}
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
+                      </motion.button>
+                    </form>
+                  </TiltCard>
+                  <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
                     <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
                     <span><strong>100% Privacy Protected</strong> &bull; <strong>Zero Spam Guarantee</strong> &bull; <strong>Cancel Anytime</strong></span>
                   </div>
@@ -198,7 +219,7 @@ function Index() {
                   {["A", "M", "K"].map((c) => (
                     <span
                       key={c}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-accent text-xs font-bold text-ink"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-accent text-xs font-bold text-ink shadow-sm"
                     >
                       {c}
                     </span>
@@ -209,59 +230,96 @@ function Index() {
                 </p>
               </div>
 
-              <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 max-w-xl mx-auto text-center">
-                {proofMetrics.map(({ label, value }) => (
-                  <div key={label} className="glass-panel rounded-2xl p-2.5">
-                    <p className="text-xs font-bold text-ink">{value}</p>
-                    <p className="text-[0.65rem] text-ink-soft">{label}</p>
-                  </div>
+              {/* 3D Proof Metrics Grid */}
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-xl mx-auto text-center">
+                {proofMetrics.map(({ label, value }, idx) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.4 + idx * 0.1 }}
+                  >
+                    <TiltCard tiltDegree={12} className="p-3 text-center">
+                      <p className="text-xs font-bold text-ink">{value}</p>
+                      <p className="text-[0.65rem] text-ink-soft">{label}</p>
+                    </TiltCard>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mt-16 text-center">
+            {/* Why Clockitt Works Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-20 text-center"
+            >
               <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                 Why Clockitt Works
               </h2>
               <p className="mt-2 text-sm text-ink-soft">
                 Accountability designed so snooze is no longer an option.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="mt-6 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
-              {pillars.map(({ icon: Icon, title, copy }) => (
-                <div
+            {/* 3D Glassmorphism Pillars Grid */}
+            <div className="mt-8 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+              {pillars.map(({ icon: Icon, title, copy }, idx) => (
+                <motion.div
                   key={title}
-                  className="glass-panel group rounded-3xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                 >
-                  <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-ink transition-colors group-hover:bg-amber group-hover:text-primary-foreground">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <h3 className="text-base font-bold tracking-tight text-ink">{title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">{copy}</p>
-                </div>
+                  <TiltCard tiltDegree={15} className="h-full p-5">
+                    <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-ink shadow-sm">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="text-base font-bold tracking-tight text-ink">{title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{copy}</p>
+                  </TiltCard>
+                </motion.div>
               ))}
             </div>
 
-            <div className="mt-14 glass-panel rounded-3xl p-6 sm:p-8 text-left">
-              <div className="mb-6 flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-ink" />
-                <h2 className="text-lg font-bold tracking-tight text-ink">Trust & Privacy Guarantee</h2>
-              </div>
-              <div className="grid gap-6 sm:grid-cols-3">
-                {trustSignals.map(({ icon: Icon, title, copy }) => (
-                  <div key={title} className="flex flex-col gap-1.5">
-                    <div className="flex items-center gap-2 font-semibold text-sm text-ink">
-                      <Icon className="h-4 w-4 shrink-0 text-amber-deep" />
-                      <span>{title}</span>
+            {/* Trust & Privacy Guarantee Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16 text-left"
+            >
+              <TiltCard tiltDegree={6} className="p-6 sm:p-8">
+                <div className="mb-6 flex items-center gap-2">
+                  <ShieldCheck className="h-6 w-6 text-amber-deep" />
+                  <h2 className="text-lg font-bold tracking-tight text-ink">Trust & Privacy Guarantee</h2>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-3">
+                  {trustSignals.map(({ icon: Icon, title, copy }) => (
+                    <div key={title} className="flex flex-col gap-1.5">
+                      <div className="flex items-center gap-2 font-semibold text-sm text-ink">
+                        <Icon className="h-4 w-4 shrink-0 text-amber-deep" />
+                        <span>{title}</span>
+                      </div>
+                      <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
                     </div>
-                    <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+                  ))}
+                </div>
+              </TiltCard>
+            </motion.div>
 
-            <div className="mt-14 text-left">
+            {/* Frequently Asked Questions Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16 text-left"
+            >
               <div className="mb-6 text-center">
                 <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                   Frequently Asked Questions
@@ -270,20 +328,29 @@ function Index() {
                   Everything you need to know about Clockitt early access.
                 </p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {faqs.map(({ q, a }) => (
-                  <div key={q} className="glass-panel rounded-3xl p-5">
-                    <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1.5">
-                      <HelpCircle className="h-4 w-4 shrink-0 text-amber-deep" />
-                      <h3>{q}</h3>
-                    </div>
-                    <p className="text-xs leading-relaxed text-ink-soft">{a}</p>
-                  </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {faqs.map(({ q, a }, idx) => (
+                  <motion.div
+                    key={q}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  >
+                    <TiltCard tiltDegree={10} className="h-full p-5">
+                      <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1.5">
+                        <HelpCircle className="h-4 w-4 shrink-0 text-amber-deep" />
+                        <h3>{q}</h3>
+                      </div>
+                      <p className="text-xs leading-relaxed text-ink-soft">{a}</p>
+                    </TiltCard>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
+            {/* In-body Links Bar */}
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
               <span className="text-ink-soft">Explore Clockitt:</span>
               <Link
                 to="/how-it-works"
@@ -303,6 +370,12 @@ function Index() {
               >
                 Privacy policy &rarr;
               </Link>
+              <Link
+                to="/terms"
+                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+              >
+                Terms of service &rarr;
+              </Link>
             </div>
           </div>
         </section>
@@ -312,4 +385,3 @@ function Index() {
     </div>
   );
 }
-

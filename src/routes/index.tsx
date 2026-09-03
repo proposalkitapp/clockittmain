@@ -116,8 +116,7 @@ function Index() {
             </h1>
 
             <p className="rise-in mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
-              Set a goal, set a deadline. When the alarm fires, it doesn&rsquo;t stop until you
-              submit photo proof. No proof, no silence.
+              Set a goal, set a deadline. When the alarm fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong>. No proof, no silence.
             </p>
 
             <div id="waitlist" className="mx-auto mt-9 max-w-xl scroll-mt-24">
@@ -157,7 +156,7 @@ function Index() {
                   </form>
                   <div className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
                     <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
-                    <span>100% Privacy Protected &bull; Zero Spam Guarantee &bull; Cancel Anytime</span>
+                    <span><strong>100% Privacy Protected</strong> &bull; <strong>Zero Spam Guarantee</strong> &bull; <strong>Cancel Anytime</strong></span>
                   </div>
                 </>
               )}
@@ -179,12 +178,21 @@ function Index() {
                   ))}
                 </div>
                 <p className="text-sm text-ink-soft">
-                  Early access — first 100 get founder pricing, locked for life.
+                  Early access — <strong>first 100 get founder pricing</strong>, locked for life.
                 </p>
               </div>
             </div>
 
-            <div className="mt-14 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-16 text-center">
+              <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+                Why Clockitt Works
+              </h2>
+              <p className="mt-2 text-sm text-ink-soft">
+                Accountability designed so snooze is no longer an option.
+              </p>
+            </div>
+
+            <div className="mt-6 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
               {pillars.map(({ icon: Icon, title, copy }) => (
                 <div
                   key={title}
@@ -193,7 +201,7 @@ function Index() {
                   <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-ink transition-colors group-hover:bg-amber group-hover:text-primary-foreground">
                     <Icon className="h-4 w-4" />
                   </span>
-                  <h2 className="text-base font-bold tracking-tight">{title}</h2>
+                  <h3 className="text-base font-bold tracking-tight text-ink">{title}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-ink-soft">{copy}</p>
                 </div>
               ))}

@@ -39,7 +39,7 @@ const pillars = [
   { icon: AlarmClock, title: "The alarm doesn\u2019t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
   { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can\u2019t fake yesterday\u2019s gym selfie." },
   { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn\u2019t a lie you tell yourself. Five levels, real momentum." },
-  { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "Cancel before day 3 and pay nothing. After that, $5/mo \u2014 less than a coffee for a coach that never lets you off the hook. Waitlist members lock in founder pricing before public launch." },
+  { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "$5/mo \u2014 For a coach that never lets you off the hook. Waitlist members get locked in before public launch." },
 ];
 
 const trustSignals = [

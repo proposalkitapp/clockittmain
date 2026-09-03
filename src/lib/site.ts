@@ -71,3 +71,13 @@ export const softwareAppLd = {
     "Accountability app for daily goals, shared check-ins and finishing what you start.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
+
+export const webSiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "Clockitt is an accountability app that turns a morning alarm into photo-verified goal completions.",
+};
+

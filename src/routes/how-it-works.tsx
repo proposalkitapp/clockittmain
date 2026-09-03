@@ -3,7 +3,7 @@ import { AlarmClock, Flag, MessageCircle, Trophy } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { breadcrumbLd, canonical, pageMeta } from "@/lib/site";
+import { breadcrumbLd, canonical, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 
 const PATH = "/how-it-works";
 const TITLE = "How Clockitt Works — Wake Up, Set Goals, Finish Them";
@@ -24,6 +24,8 @@ export const Route = createFileRoute("/how-it-works")({
           ]),
         ),
       },
+      { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
+      { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
     ],
   }),
   component: HowItWorks,

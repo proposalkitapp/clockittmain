@@ -3,7 +3,7 @@ import { HeartHandshake, Repeat, ShieldCheck, Users } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { breadcrumbLd, canonical, pageMeta, softwareAppLd } from "@/lib/site";
+import { breadcrumbLd, canonical, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 
 const PATH = "/accountability-partner";
 const TITLE = "Accountability Partner App — Share Goals & Check In | Clockitt";
@@ -25,6 +25,7 @@ export const Route = createFileRoute("/accountability-partner")({
         ),
       },
       { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
+      { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
     ],
   }),
   component: AccountabilityPartner,

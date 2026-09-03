@@ -1,45 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { AlarmClock, Check, DollarSign, Eye, Flag, Sparkles, Users, Zap } from "lucide-react";
+import { AlarmClock, Check, DollarSign, Eye, Sparkles, Users, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
-import { canonical, organizationLd, softwareAppLd } from "@/lib/site";
+import { canonical, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 const mascot = mascotAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clockitt — Accountability App to Finish What You Start" },
-      {
-        name: "description",
-        content:
+      ...pageMeta({
+        title: "Clockitt — Accountability App to Finish What You Start",
+        description:
           "Clockitt is the accountability app that helps you wake up, set daily goals, stay accountable, and actually finish what you start. Join the early access waitlist.",
-      },
+        path: "/",
+      }),
       {
         name: "keywords",
         content:
           "accountability app, productivity app, goal tracker, daily goals, habit accountability, Clockitt",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:title", content: "Clockitt — Accountability App to Finish What You Start" },
-      {
-        property: "og:description",
-        content:
-          "The accountability app for waking up, setting daily goals, and actually finishing what you start. Join the Clockitt waitlist.",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Clockitt — Accountability App to Finish What You Start" },
-      {
-        name: "twitter:description",
-        content:
-          "The accountability app for waking up, setting daily goals, and actually finishing what you start. Join the Clockitt waitlist.",
       },
     ],
     links: canonical("/"),
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(organizationLd) },
       { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
+      { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
     ],
   }),
 
@@ -52,32 +41,6 @@ const pillars = [
   { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn\u2019t a lie you tell yourself. Five levels, real momentum." },
   { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "Cancel before day 3 and pay nothing. After that, $5/mo \u2014 less than a coffee for a coach that never lets you off the hook. Waitlist members lock in founder pricing before public launch." },
 ];
-
-function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`font-extrabold tracking-[0.18em] text-ink uppercase ${className}`}
-    >
-      Clockitt
-    </span>
-  );
-}
-
-function XIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
-      <path d="M18.9 2H22l-7 8.1L23.2 22h-6.5l-5-6.6-5.8 6.6H2.8l7.5-8.6L1.4 2h6.6l4.6 6.1L18.9 2Zm-1.1 18.1h1.7L7.3 3.8H5.5l12.3 16.3Z" />
-    </svg>
-  );
-}
-
-function TikTokIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
-      <path d="M16.5 2h-3v13.2a2.7 2.7 0 1 1-2.3-2.7v-3a5.7 5.7 0 1 0 5.3 5.7V9.4A6.9 6.9 0 0 0 21 10.8V7.7a3.9 3.9 0 0 1-4.5-3.9V2Z" />
-    </svg>
-  );
-}
 
 function Index() {
   const [email, setEmail] = useState("");
@@ -106,36 +69,10 @@ function Index() {
   }
 
   return (
-    <div className="canvas-gradient min-h-screen text-ink">
-      <header className="sticky top-0 z-30 border-b border-border/60 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-5 sm:px-8">
-          <a href="/" className="flex items-center gap-2">
-            <img src={mascot} alt="Clockitt mascot" width={32} height={32} className="h-8 w-8" />
-            <Wordmark className="text-base sm:text-lg" />
-          </a>
-          <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
-          <div className="hidden h-5 w-px bg-border sm:block" />
-          <div className="flex items-center gap-2">
-            {[
-              { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },
-              { Icon: TikTokIcon, href: "https://tiktok.com/useclockittapp", label: "Clockitt on TikTok" },
-            ].map(({ Icon, href, label }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full text-ink transition-all hover:-translate-y-0.5 hover:bg-accent"
-              >
-                <Icon />
-              </a>
-            ))}
-          </div>
-        </div>
-      </header>
+    <div className="canvas-gradient min-h-screen text-ink flex flex-col">
+      <SiteHeader />
 
-      <main>
+      <main className="flex-1">
         <section className="relative overflow-hidden px-5 pb-20 pt-14 sm:px-8 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
             <div className="rise-in float-soft mx-auto mb-6 w-fit">
@@ -241,19 +178,8 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border/60 bg-background/60 px-5 py-10 backdrop-blur-xl sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex items-center gap-2">
-            <img src={mascot} alt="" width={28} height={28} loading="lazy" className="h-7 w-7" />
-            <Wordmark className="text-lg" />
-          </div>
-          <div className="my-6 h-px bg-border" />
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-ink-soft">
-            <p>@2026 All rights Reserved</p>
-            <p className="font-semibold text-ink">Made with Clockitt</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
+

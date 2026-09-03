@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { breadcrumbLd, canonical, pageMeta } from "@/lib/site";
+import { breadcrumbLd, canonical, pageMeta, webSiteLd } from "@/lib/site";
 
 const PATH = "/privacy";
 const TITLE = "Privacy — How Clockitt Handles Your Waitlist Data";
@@ -23,6 +23,7 @@ export const Route = createFileRoute("/privacy")({
           ]),
         ),
       },
+      { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
     ],
   }),
   component: Privacy,

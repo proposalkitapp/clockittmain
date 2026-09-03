@@ -65,19 +65,26 @@ const pillars = [
 const trustSignals = [
   {
     icon: ShieldCheck,
-    title: "Privacy & Data Protection Guaranteed",
-    copy: "Your verification photos and goals are encrypted and never shared publicly without your explicit permission.",
+    title: "100% Data Encryption & Privacy Guarantee",
+    copy: "Your daily goals and photo proof submissions are encrypted with 256-bit SSL protection and never shared publicly without your consent.",
   },
   {
     icon: RefreshCw,
-    title: "Zero Risk & Cancel Anytime",
-    copy: "Enjoy a 3-day free trial. Cancel anytime before your trial ends with 1 click and pay zero dollars.",
+    title: "Risk-Free 3-Day Trial Guarantee",
+    copy: "Try Clockitt completely free for 3 days. Cancel anytime with 1 click before your trial ends and pay zero dollars.",
   },
   {
     icon: Lock,
-    title: "Founder Rate Locked for Life",
-    copy: "Waitlist members secure $5/month pricing forever before the public launch price increase.",
+    title: "Lifetime Founder Rate Guarantee",
+    copy: "Waitlist members lock in the $5/month founder rate permanently before the public launch price increase.",
   },
+];
+
+const proofMetrics = [
+  { label: "AI Verification", value: "Claude Vision" },
+  { label: "Encrypted Storage", value: "256-Bit SSL" },
+  { label: "Trial Guarantee", value: "3 Days Free" },
+  { label: "Founder Pricing", value: "$5/mo Locked" },
 ];
 
 function Index() {
@@ -200,6 +207,15 @@ function Index() {
                 <p className="text-sm text-ink-soft">
                   Early access — <strong>first 100 get founder pricing</strong>, locked for life.
                 </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 max-w-xl mx-auto text-center">
+                {proofMetrics.map(({ label, value }) => (
+                  <div key={label} className="glass-panel rounded-2xl p-2.5">
+                    <p className="text-xs font-bold text-ink">{value}</p>
+                    <p className="text-[0.65rem] text-ink-soft">{label}</p>
+                  </div>
+                ))}
               </div>
             </div>
 

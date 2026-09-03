@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { Check, Flag, Sparkles, Users } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
+import { canonical } from "@/lib/site";
 
 const mascot = mascotAsset.url;
 
@@ -35,7 +36,9 @@ export const Route = createFileRoute("/")({
           "The accountability app for waking up, setting daily goals, and actually finishing what you start. Join the Clockitt waitlist.",
       },
     ],
+    links: canonical("/"),
   }),
+
   component: Index,
 });
 

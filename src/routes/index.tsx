@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Check, Flag, Sparkles, Users } from "lucide-react";
+import { AlarmClock, Check, DollarSign, Eye, Flag, Sparkles, Users, Zap } from "lucide-react";
 import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { canonical, organizationLd, softwareAppLd } from "@/lib/site";
@@ -47,9 +47,10 @@ export const Route = createFileRoute("/")({
 });
 
 const pillars = [
-  { icon: Flag, title: "Set a clear finish line", copy: "Define what done looks like before the timer starts." },
-  { icon: Users, title: "Stay accountable", copy: "Share your goal with people who actually check in." },
-  { icon: Sparkles, title: "Celebrate the done", copy: "Every finished task gets its moment. Momentum compounds." },
+  { icon: AlarmClock, title: "The alarm doesn\u2019t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
+  { icon: Eye, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can\u2019t fake yesterday\u2019s gym selfie." },
+  { icon: Zap, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn\u2019t a lie you tell yourself. Five levels, real momentum." },
+  { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "Cancel before day 3 and pay nothing. After that, $5/mo \u2014 less than a coffee for a coach that never lets you off the hook. Waitlist members lock in founder pricing before public launch." },
 ];
 
 function Wordmark({ className = "" }: { className?: string }) {
@@ -153,15 +154,15 @@ function Index() {
             </div>
 
             <h1 className="rise-in text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl">
-              Finish what you start.{" "}
+              The alarm that won&rsquo;t shut up{" "}
               <span className="bg-gradient-to-br from-amber to-amber-deep bg-clip-text text-transparent">
-                Together.
+                until you prove it.
               </span>
             </h1>
 
             <p className="rise-in mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
-              Clockitt is a productivity and accountability app that helps you wake up, set
-              daily goals, stay accountable, and actually finish what you start.
+              Set a goal, set a deadline. When the alarm fires, it doesn&rsquo;t stop until you
+              submit photo proof. No proof, no silence.
             </p>
 
             <div id="waitlist" className="mx-auto mt-9 max-w-xl scroll-mt-24">
@@ -217,12 +218,12 @@ function Index() {
                   ))}
                 </div>
                 <p className="text-sm text-ink-soft">
-                  Join other early users on the Clockitt waitlist.
+                  Early access — first 100 get founder pricing, locked for life.
                 </p>
               </div>
             </div>
 
-            <div className="mt-14 grid gap-3 text-left sm:grid-cols-3">
+            <div className="mt-14 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
               {pillars.map(({ icon: Icon, title, copy }) => (
                 <div
                   key={title}

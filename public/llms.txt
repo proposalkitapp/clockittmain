@@ -1,0 +1,16 @@
+# Clockitt
+
+> Clockitt is a productivity and accountability app that helps you wake up, set daily goals, stay accountable with a partner, and actually finish what you start. Currently in early access via waitlist.
+
+## Pages
+
+- [Home](https://clockittnew.lovable.app/): Product overview and waitlist signup.
+- [How it works](https://clockittnew.lovable.app/how-it-works): The four-step Clockitt loop — wake up, set a finish line, check in, close the loop.
+- [Accountability partner app](https://clockittnew.lovable.app/accountability-partner): How Clockitt pairs you with a real person for daily goal check-ins.
+- [Privacy](https://clockittnew.lovable.app/privacy): What waitlist data is collected and how to remove it.
+
+## Optional
+
+- [Sitemap](https://clockittnew.lovable.app/sitemap.xml)
+- X: https://x.com/clockittapp
+- TikTok: https://tiktok.com/useclockittapp

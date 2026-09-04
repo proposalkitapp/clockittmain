@@ -173,7 +173,7 @@ function Index() {
                 </TiltCard>
               ) : (
                 <>
-                  <TiltCard tiltDegree={8} className="p-2 sm:p-3">
+                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-2 shadow-lg backdrop-blur-xl sm:p-3">
                     <form
                       onSubmit={onSubmit}
                       className="flex flex-col gap-2 sm:flex-row sm:items-center"
@@ -201,7 +201,7 @@ function Index() {
                         <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                       </motion.button>
                     </form>
-                  </TiltCard>
+                  </div>
                   <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
                     <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
                     <span><strong>100% Privacy Protected</strong> &bull; <strong>Zero Spam Guarantee</strong> &bull; <strong>Cancel Anytime</strong></span>

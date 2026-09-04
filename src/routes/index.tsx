@@ -173,7 +173,7 @@ function Index() {
                 </TiltCard>
               ) : (
                 <>
-                  <TiltCard tiltDegree={8} className="p-2 sm:p-3">
+                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-2 shadow-lg backdrop-blur-xl sm:p-3">
                     <form
                       onSubmit={onSubmit}
                       className="flex flex-col gap-2 sm:flex-row sm:items-center"

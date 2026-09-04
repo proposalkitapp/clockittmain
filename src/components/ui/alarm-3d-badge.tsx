@@ -11,7 +11,7 @@ export function Alarm3DBadge({ children, className = "" }: Alarm3DBadgeProps) {
     <motion.div
       initial={{ opacity: 0, y: -10, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, ease: "out" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       whileHover={{ scale: 1.04 }}
       className={`relative inline-flex items-center gap-2 rounded-full border border-amber/40 bg-accent/70 px-4 py-1.5 text-xs font-bold tracking-wide text-ink backdrop-blur-md shadow-md hover:shadow-lg transition-all ${className}`}
     >

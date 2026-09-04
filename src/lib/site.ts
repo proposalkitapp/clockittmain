@@ -1,6 +1,6 @@
 export const SITE_URL = "https://clockittnew.lovable.app";
 export const SITE_NAME = "Clockitt";
-export const OG_IMAGE = `${SITE_URL}/og-clockitt.jpg`;
+export const OG_IMAGE = `${SITE_URL}/og-clockitt.png`;
 
 type MetaEntry = { title?: string; name?: string; property?: string; content?: string };
 

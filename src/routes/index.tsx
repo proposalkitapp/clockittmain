@@ -201,7 +201,7 @@ function Index() {
                         <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                       </motion.button>
                     </form>
-                  </TiltCard>
+                  </div>
                   <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
                     <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
                     <span><strong>100% Privacy Protected</strong> &bull; <strong>Zero Spam Guarantee</strong> &bull; <strong>Cancel Anytime</strong></span>

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+
 import { ThemeToggle } from "./theme-toggle";
 
-const mascot = mascotAsset.url;
+const mascot = "/clockitt-mascot.png";
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (

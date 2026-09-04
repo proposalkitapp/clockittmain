@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+
 import { Wordmark } from "./site-header";
 
-const mascot = mascotAsset.url;
+const mascot = "/clockitt-mascot.png";
 
 export function SiteFooter() {
   return (

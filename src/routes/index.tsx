@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { AlarmClock, Camera, Check, DollarSign, Flame, HelpCircle, Lock, RefreshCw, ShieldCheck } from "lucide-react";
-import mascotAsset from "@/assets/clockitt-mascot.png.asset.json";
+
 import { supabase } from "@/integrations/supabase/client";
 import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
@@ -11,7 +11,7 @@ import { TiltCard } from "@/components/ui/tilt-card";
 import { Floating3DMascot } from "@/components/ui/floating-3d-mascot";
 import { Alarm3DBadge } from "@/components/ui/alarm-3d-badge";
 
-const mascot = mascotAsset.url;
+const mascot = "/clockitt-mascot.png";
 
 const faqs = [
   {

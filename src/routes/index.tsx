@@ -96,6 +96,11 @@ function Index() {
   const [joined, setJoined] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();

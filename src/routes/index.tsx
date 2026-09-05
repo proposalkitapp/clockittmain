@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { AlarmClock, Camera, Check, DollarSign, Flame, HelpCircle, Lock, RefreshCw, ShieldCheck } from "lucide-react";
 
@@ -96,6 +96,11 @@ function Index() {
   const [joined, setJoined] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -192,12 +197,12 @@ function Index() {
                       />
                       <motion.button
                         type="submit"
-                        disabled={submitting}
+                        disabled={submitting || !hydrated}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-all disabled:opacity-70"
                       >
-                        {submitting ? "Joining…" : "Join the waitlist"}
+                        {!hydrated ? "Loading…" : submitting ? "Joining…" : "Join the waitlist"}
                         <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                       </motion.button>
                     </form>

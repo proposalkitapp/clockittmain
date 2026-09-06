@@ -3,7 +3,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { AlarmClock, Camera, Check, DollarSign, Flame, HelpCircle, Lock, RefreshCw, ShieldCheck } from "lucide-react";
 
-import { supabase } from "@/integrations/supabase/client";
+import { joinWaitlist } from "@/lib/waitlist.functions";
 import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -111,15 +111,18 @@ function Index() {
     }
     setSubmitting(true);
     setError(null);
-    const { error: insertError } = await supabase
-      .from("waitlist_signups")
-      .insert({ email: value });
-    setSubmitting(false);
-    if (insertError && insertError.code !== "23505") {
+    try {
+      const result = await joinWaitlist({ data: { email: value } });
+      if (!result.ok) {
+        setError("Something went wrong. Please try again.");
+        return;
+      }
+      setJoined(true);
+    } catch {
       setError("Something went wrong. Please try again.");
-      return;
+    } finally {
+      setSubmitting(false);
     }
-    setJoined(true);
   }
 
   return (

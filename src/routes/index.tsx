@@ -111,13 +111,18 @@ function Index() {
     }
     setSubmitting(true);
     setError(null);
-    const result = await joinWaitlist({ data: { email: value } });
-    setSubmitting(false);
-    if (!result.ok) {
+    try {
+      const result = await joinWaitlist({ data: { email: value } });
+      if (!result.ok) {
+        setError("Something went wrong. Please try again.");
+        return;
+      }
+      setJoined(true);
+    } catch {
       setError("Something went wrong. Please try again.");
-      return;
+    } finally {
+      setSubmitting(false);
     }
-    setJoined(true);
   }
 
   return (

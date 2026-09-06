@@ -13,7 +13,7 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
-  component: Dashboard;
+  component: Dashboard,
 });
 
 type Signup = { id: string; email: string; created_at: string };

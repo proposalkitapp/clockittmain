@@ -15,6 +15,13 @@
       "when": 1788599827917,
       "tag": "0001_admin_roles_and_waitlist_read",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788763526976,
+      "tag": "0002_revoke_has_role_execute",
+      "breakpoints": true
     }
   ]
 }

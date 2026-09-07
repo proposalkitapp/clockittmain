@@ -224,14 +224,30 @@ function Index() {
 
               <div className="mt-6 flex flex-col items-center gap-3">
                 <div className="flex -space-x-2">
-                  {["A", "M", "K"].map((c) => (
-                    <span
-                      key={c}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-accent text-xs font-bold text-ink shadow-sm"
-                    >
-                      {c}
-                    </span>
-                  ))}
+                  {[
+                    { src: "/avatar-1.jpg", alt: "Clockitt early supporter" },
+                    { src: "/avatar-2.png", alt: "Clockitt early supporter" },
+                    null,
+                  ].map((a, i) =>
+                    a ? (
+                      <img
+                        key={a.src}
+                        src={a.src}
+                        alt={a.alt}
+                        width={36}
+                        height={36}
+                        className="h-9 w-9 rounded-full border-2 border-background object-cover shadow-sm"
+                      />
+                    ) : (
+                      <span
+                        key={`placeholder-${i}`}
+                        className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-dashed border-border bg-accent/50 text-xs font-bold text-ink-soft shadow-sm"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    ),
+                  )}
                 </div>
                 <p className="text-sm text-ink-soft">
                   Get early access to be strictly timed and locked in.

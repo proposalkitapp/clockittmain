@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Loader2, Mail, TrendingUp, Users } from "lucide-react";
+import { Download, Loader2, Mail, TrendingUp, Users } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/site-header";
@@ -66,16 +66,39 @@ function Dashboard() {
               <h1 className="text-3xl font-extrabold tracking-tight">Waitlist dashboard</h1>
               <p className="mt-1 text-sm text-ink-soft">Everyone who has signed up for early access.</p>
             </div>
-            <button
-              type="button"
-              onClick={async () => {
-                await supabase.auth.signOut();
-                navigate({ to: "/auth" });
-              }}
-              className="rounded-xl border border-border bg-card/70 px-4 py-2 text-sm font-semibold backdrop-blur-xl"
-            >
-              Sign out
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                disabled={!rows || rows.length === 0}
+                onClick={() => {
+                  if (!rows) return;
+                  const escape = (v: string) => `"${v.replace(/"/g, '""')}"`;
+                  const csv = [
+                    "Email,Signed up",
+                    ...rows.map((r) => `${escape(r.email)},${escape(r.created_at)}`),
+                  ].join("\n");
+                  const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = `clockitt-waitlist-${new Date().toISOString().slice(0, 10)}.csv`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/70 px-4 py-2 text-sm font-semibold backdrop-blur-xl disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" /> Download CSV
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  navigate({ to: "/auth" });
+                }}
+                className="rounded-xl border border-border bg-card/70 px-4 py-2 text-sm font-semibold backdrop-blur-xl"
+              >
+                Sign out
+              </button>
+            </div>
           </div>
 
           {error && (

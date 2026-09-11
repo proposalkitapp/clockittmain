@@ -98,9 +98,9 @@ export const softwareAppLd = {
     "@id": `${SITE_URL}/#organization`,
   },
   description:
-    "Clockitt is an AI-powered accountability app and persistent alarm that requires photo proof verified by Claude Vision AI to silence and complete daily goals.",
+    "Clockitt is an AI-powered accountability app and persistent alarm that requires photo proof verified by AI to silence and complete daily goals.",
   featureList: [
-    "AI Photo Proof Verification with Claude Vision",
+    "AI Photo Proof Verification",
     "Persistent Un-snoozeable Alarms",
     "Daily Finish Line & Goal Tracking",
     "Accountability Partner Check-ins",

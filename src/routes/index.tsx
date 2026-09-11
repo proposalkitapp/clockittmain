@@ -17,11 +17,11 @@ const mascot = "/clockitt-mascot.png";
 const faqs = [
   {
     q: "What is Clockitt?",
-    a: "Clockitt is an AI-powered goal accountability app and persistent morning alarm designed to eliminate procrastination and snooze habits. When an alarm fires at your deadline, it continues ringing until you submit live photo proof verified by Claude Vision AI.",
+    a: "Clockitt is an AI-powered goal accountability app and persistent morning alarm designed to eliminate procrastination and snooze habits. When an alarm fires at your deadline, it continues ringing until you submit live photo proof verified by AI.",
   },
   {
     q: "How does AI photo proof verification work?",
-    a: "When your alarm fires at your deadline, you capture a photo of your completed task. Claude Vision AI analyzes the image in real time to verify visual alignment with your committed goal before silencing the alarm.",
+    a: "When your alarm fires at your deadline, you capture a photo of your completed task. Clockitt's AI analyzes the image in real time to verify visual alignment with your committed goal before silencing the alarm.",
   },
   {
     q: "What happens if I fail to submit proof or want to snooze?",
@@ -61,7 +61,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "accountability app, AI alarm app, photo proof alarm, goal tracker, daily goals, habit accountability, Claude Vision productivity, Clockitt",
+          "accountability app, AI alarm app, photo proof alarm, goal tracker, daily goals, habit accountability, AI photo verification, Clockitt",
       },
     ],
     links: canonical("/"),
@@ -75,7 +75,7 @@ export const Route = createFileRoute("/")({
 
 const pillars = [
   { icon: AlarmClock, title: "The alarm doesn’t stop on its own", copy: "Snooze into oblivion elsewhere. Here, the alarm keeps firing at your deadline until you submit proof. Silence is earned." },
-  { icon: Camera, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Claude Vision verifies it matches the task. You can’t fake yesterday’s gym selfie." },
+  { icon: Camera, title: "AI checks your proof, not your honor system", copy: "Snap a photo. Clockitt AI verifies it matches the task. You can’t fake yesterday’s gym selfie." },
   { icon: Flame, title: "Streaks that mean something", copy: "Every check-in is verified, so your streak isn’t a lie you tell yourself. Five levels, real momentum." },
   { icon: DollarSign, title: "$5/month. First 3 days free.", copy: "$5/mo — For a coach that never lets you off the hook. Waitlist members get locked in before public launch." },
 ];
@@ -104,7 +104,7 @@ const trustSignals = [
 ];
 
 const proofMetrics = [
-  { label: "Photo Verification", value: "Claude Vision" },
+  { label: "Photo Verification", value: "Instant AI Vision" },
   { label: "Encrypted Storage", value: "256-Bit SSL" },
   { label: "Trial Guarantee", value: "3 Days Free" },
   { label: "Founder Pricing", value: "$5/mo Locked" },
@@ -206,7 +206,7 @@ function Index() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
             >
-              <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by Claude Vision AI. No proof, no silence.
+              <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by AI. No proof, no silence.
             </motion.p>
 
             <motion.div
@@ -426,10 +426,10 @@ function Index() {
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <div className="flex items-center gap-2 font-bold text-ink mb-1.5">
                       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-deep text-[0.65rem] font-bold text-white">3</span>
-                      <h3>Claude Vision AI Analysis</h3>
+                      <h3>AI Photo Analysis</h3>
                     </div>
                     <p className="text-ink-soft leading-relaxed">
-                      Claude 3.5 Vision analyzes the visual attributes of the photo against your committed goal before silencing the alarm.
+                      Our AI vision system analyzes the visual attributes of the photo against your committed goal before silencing the alarm.
                     </p>
                   </div>
 
@@ -486,7 +486,7 @@ function Index() {
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <dt className="font-bold text-ink mb-1">Verification Engine</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      Claude Vision AI inspects your submitted photo proof in real time to ensure it strictly matches your committed daily task.
+                      Clockitt's AI vision system inspects your submitted photo proof in real time to ensure it strictly matches your committed daily task.
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">

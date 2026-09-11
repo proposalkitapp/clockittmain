@@ -64,7 +64,7 @@ export function TermsSections() {
           <li>You set tasks and assign a specific deadline time to each task</li>
           <li>When the deadline arrives, an alarm fires on your device</li>
           <li>The alarm does not stop until you submit a photograph proving the task is complete</li>
-          <li>Our AI system (powered by Anthropic's Claude) analyses the photo and determines whether it reasonably demonstrates task completion</li>
+          <li>Our AI system analyses the photo and determines whether it reasonably demonstrates task completion</li>
           <li>If verification passes, the alarm stops. If not, the alarm continues until a valid proof is submitted or you manually mark the task as incomplete.</li>
         </ul>
         <p className="rounded-xl border border-border/50 bg-background/50 p-4 text-xs italic text-ink-soft sm:text-sm">
@@ -158,7 +158,7 @@ export function TermsSections() {
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>Transmitted securely to our storage system (Supabase)</li>
-          <li>Analysed by Anthropic's Claude AI for verification purposes</li>
+          <li>Analysed by our AI verification system for verification purposes</li>
           <li>Stored privately and accessible only to you</li>
           <li>Never shared with other users or sold to third parties</li>
           <li>Retained for the duration of your account and deleted upon account deletion</li>

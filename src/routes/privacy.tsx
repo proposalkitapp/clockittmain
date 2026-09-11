@@ -8,7 +8,7 @@ import { ShieldCheck, FileText, Lock, Mail, ExternalLink, CheckCircle2, XCircle 
 const PATH = "/privacy";
 const TITLE = "Privacy Policy — Clockitt App";
 const DESCRIPTION =
-  "Comprehensive Privacy Policy for Clockitt app. Learn what data we collect, how proof photos are processed by Claude AI, and how your data is protected.";
+  "Comprehensive Privacy Policy for Clockitt app. Learn what data we collect, how proof photos are processed by AI, and how your data is protected.";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -74,8 +74,8 @@ export function PrivacySections() {
           <p>When you submit a photo as proof of task completion:</p>
           <ul className="list-disc space-y-1.5 pl-5">
             <li>The photograph is uploaded to secure cloud storage (Supabase Storage)</li>
-            <li>The photograph is transmitted to Anthropic's Claude AI for verification analysis</li>
-            <li>The photograph URL and Claude's verdict are stored against your task record</li>
+            <li>The photograph is transmitted to our AI vision service for verification analysis</li>
+            <li>The photograph URL and AI verification verdict are stored against your task record</li>
             <li>Photographs are stored privately — only you can access them</li>
             <li>We do not view, share, or use your photographs for any purpose other than task verification</li>
           </ul>
@@ -175,7 +175,7 @@ export function PrivacySections() {
               </tr>
               <tr>
                 <td className="p-3 sm:p-4 font-semibold text-ink">Task verification</td>
-                <td className="p-3 sm:p-4">To send proof photos to Claude AI for analysis</td>
+                <td className="p-3 sm:p-4">To send proof photos to our AI verification service for analysis</td>
               </tr>
               <tr>
                 <td className="p-3 sm:p-4 font-semibold text-ink">Streak and points</td>
@@ -231,11 +231,9 @@ export function PrivacySections() {
                 <td className="p-3 sm:p-4">Database storage, user authentication, and proof photo storage</td>
               </tr>
               <tr>
-                <td className="p-3 sm:p-4 font-semibold text-ink">Anthropic</td>
-                <td className="p-3 sm:p-4">
-                  <a href="https://anthropic.com/privacy" target="_blank" rel="noreferrer noopener" className="text-primary underline inline-flex items-center gap-1">anthropic.com/privacy <ExternalLink className="h-3 w-3" /></a>
-                </td>
-                <td className="p-3 sm:p-4">Claude AI processes proof photos for task verification only</td>
+                <td className="p-3 sm:p-4 font-semibold text-ink">AI Vision Infrastructure</td>
+                <td className="p-3 sm:p-4">Secure Cloud AI APIs</td>
+                <td className="p-3 sm:p-4">Processes submitted proof photos for task verification only</td>
               </tr>
               <tr>
                 <td className="p-3 sm:p-4 font-semibold text-ink">Dodo Payments</td>

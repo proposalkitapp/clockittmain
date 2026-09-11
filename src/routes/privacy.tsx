@@ -399,7 +399,7 @@ export function PrivacySections() {
         </h2>
         <div className="rounded-2xl border border-border/70 bg-card/60 p-5 space-y-2 backdrop-blur-md">
           <p><strong className="text-ink">Email:</strong> <a href="mailto:contact@useclockitt.app" className="text-primary underline font-medium">contact@useclockitt.app</a></p>
-          <p><strong className="text-ink">Website:</strong> <a href="https://useclockitt.app/privacy" target="_blank" rel="noreferrer noopener" className="text-primary underline font-medium inline-flex items-center gap-1">useclockitt.app/privacy <ExternalLink className="h-3 w-3" /></a></p>
+          <p><strong className="text-ink">Website:</strong> <a href="https://clockitt.app/privacy" target="_blank" rel="noreferrer noopener" className="text-primary underline font-medium inline-flex items-center gap-1">clockitt.app/privacy <ExternalLink className="h-3 w-3" /></a></p>
           <p><strong className="text-ink">Response time:</strong> Within 30 days for data requests, within 7 days for general inquiries</p>
         </div>
       </section>

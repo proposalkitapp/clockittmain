@@ -16,20 +16,28 @@ const mascot = "/clockitt-mascot.png";
 
 const faqs = [
   {
+    q: "What is Clockitt?",
+    a: "Clockitt is an AI-powered goal accountability app and persistent alarm designed to eliminate procrastination. When an alarm fires at your deadline, it continues ringing until you submit photo proof that Claude Vision AI verifies against your committed task.",
+  },
+  {
     q: "How does photo proof verification work?",
-    a: "When your alarm fires at your deadline, you take a quick photo of your finished task. Claude Vision AI verifies it matches your committed goal before silencing the alarm.",
+    a: "When your alarm fires at your deadline, you take a quick photo of your finished task. Claude Vision AI analyzes the photo in real time to verify it matches your committed goal before silencing the alarm.",
   },
   {
-    q: "What happens if I fail to submit proof?",
-    a: "The alarm keeps firing until valid proof is submitted. Silence is earned, eliminating the temptation to snooze past your commitments.",
+    q: "What happens if I fail to submit proof or want to snooze?",
+    a: "Clockitt eliminates the traditional snooze button. The alarm keeps firing until valid photo proof is submitted and verified, ensuring commitments cannot be brushed aside.",
   },
   {
-    q: "How does the $5/month founder rate work?",
-    a: "Waitlist members receive a 3-day free trial and lock in the $5/month rate during early access before public launch rates increase.",
+    q: "How much does Clockitt cost and is there a free trial?",
+    a: "Early access waitlist members receive a risk-free 3-day free trial and lock in a founder rate of $5/month before public launch rates increase.",
   },
   {
-    q: "Are my photos and data kept private?",
-    a: "Yes. All verification photos and goals are encrypted and private. Your data is never shared publicly or sold.",
+    q: "Can I use Clockitt with an accountability partner?",
+    a: "Yes. In addition to AI verification, Clockitt allows you to pair with friends, teammates, or study partners for shared check-ins and mutual streak accountability.",
+  },
+  {
+    q: "Are my photos, goals, and personal data kept private?",
+    a: "Yes. All verification photos and goals are protected with 256-bit SSL encryption. Photos are used strictly for AI verification and are never shared publicly or sold.",
   },
 ];
 
@@ -37,15 +45,15 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       ...pageMeta({
-        title: "Clockitt — Accountability App to Finish What You Start",
+        title: "Clockitt — AI Photo Proof Accountability & Habit Alarm App",
         description:
-          "Clockitt is the accountability app that helps you wake up, set daily goals, stay accountable, and actually finish what you start. Join the early access waitlist.",
+          "Clockitt is the accountability app and alarm that won't shut up until you submit AI-verified photo proof of your finished goal. Lock in $5/month founder access.",
         path: "/",
       }),
       {
         name: "keywords",
         content:
-          "accountability app, productivity app, goal tracker, daily goals, habit accountability, Clockitt",
+          "accountability app, AI alarm app, photo proof alarm, goal tracker, daily goals, habit accountability, Claude Vision productivity, Clockitt",
       },
     ],
     links: canonical("/"),
@@ -179,7 +187,7 @@ function Index() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
             >
-              Set a goal, set a deadline. When the alarm fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong>. No proof, no silence.
+              <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by AI. No proof, no silence.
             </motion.p>
 
             <motion.div
@@ -340,6 +348,64 @@ function Index() {
                     </div>
                   ))}
                 </div>
+              </TiltCard>
+            </motion.div>
+
+            {/* Answer Engine Quick Facts & Core Entity Summary */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16 text-left"
+            >
+              <TiltCard tiltDegree={6} className="p-6 sm:p-8">
+                <div className="mb-6 text-center sm:text-left">
+                  <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                    Clockitt at a Glance
+                  </h2>
+                  <p className="mt-1 text-xs text-ink-soft">
+                    Key facts and core specifications for the Clockitt accountability platform.
+                  </p>
+                </div>
+                <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">What is Clockitt?</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      An AI goal accountability app and persistent alarm that eliminates snooze by requiring verified photo proof to silence.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Verification Engine</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Claude Vision AI inspects your submitted photo in real time to ensure it matches your committed daily task.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Pricing & Free Trial</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      $5/month early access founder pricing with a risk-free 3-day free trial before public launch.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Accountability Modes</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Solo AI photo verification or dual-partner check-ins with friends, teammates, and study partners.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Streak Momentum</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Five-level streak system rewarding consistent verified daily follow-through and habit retention.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Data & Privacy</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      256-bit SSL encrypted storage. Verification photos are kept private and never shared publicly or sold.
+                    </dd>
+                  </div>
+                </dl>
               </TiltCard>
             </motion.div>
 

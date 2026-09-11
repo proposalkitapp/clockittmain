@@ -46,6 +46,9 @@ export function SiteFooter() {
               >
                 Accountability partner app
               </Link>
+              <Link to="/contact" className="text-ink-soft transition-colors hover:text-ink">
+                Contact
+              </Link>
               <Link to="/privacy" className="text-ink-soft transition-colors hover:text-ink">
                 Privacy Policy
               </Link>
@@ -57,11 +60,11 @@ export function SiteFooter() {
             <div className="grid gap-2 text-sm">
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink">Trust &amp; Support</p>
               <a
-                href="mailto:support@clockitt.app"
+                href="mailto:clockittapp@gmail.com"
                 className="inline-flex items-center gap-1.5 text-ink-soft transition-colors hover:text-ink"
               >
                 <Mail className="h-3.5 w-3.5" />
-                support@clockitt.app
+                clockittapp@gmail.com
               </a>
               <span className="text-xs text-ink-soft">3-Day Risk-Free Trial Guarantee</span>
               <span className="text-xs text-ink-soft">$5/mo Founder Rate Lock</span>

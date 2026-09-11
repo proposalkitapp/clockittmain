@@ -31,6 +31,7 @@ function TikTokIcon() {
 const navLinks = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/accountability-partner", label: "Accountability partner" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {

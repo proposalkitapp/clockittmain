@@ -83,7 +83,7 @@ export function TermsSections() {
         <ul className="list-disc space-y-2 pl-5">
           <li>Provide accurate and complete information during registration</li>
           <li>Keep your password secure and not share it with others</li>
-          <li>Notify us immediately at <a href="mailto:contact@useclockitt.app" className="font-semibold text-primary underline">contact@useclockitt.app</a> if you suspect unauthorised access</li>
+          <li>Notify us immediately at <a href="mailto:clockittapp@gmail.com" className="font-semibold text-primary underline">clockittapp@gmail.com</a> if you suspect unauthorised access</li>
           <li>Not create accounts for others without their explicit consent</li>
           <li>Not use another person's account without permission</li>
         </ul>
@@ -125,7 +125,7 @@ export function TermsSections() {
         <div className="space-y-3">
           <h3 className="text-base font-bold text-ink sm:text-lg">4.5 Refund Policy</h3>
           <p>
-            Because Clockitt offers a free trial before payment is required, all sales are final and non-refundable once payment is completed. If you experience a technical issue preventing access after payment, contact us at <a href="mailto:contact@useclockitt.app" className="font-semibold text-primary underline">contact@useclockitt.app</a> within 7 days and we will work to resolve it.
+            Because Clockitt offers a free trial before payment is required, all sales are final and non-refundable once payment is completed. If you experience a technical issue preventing access after payment, contact us at <a href="mailto:clockittapp@gmail.com" className="font-semibold text-primary underline">clockittapp@gmail.com</a> within 7 days and we will work to resolve it.
           </p>
         </div>
       </section>
@@ -244,7 +244,7 @@ export function TermsSections() {
           12. Governing Law and Disputes
         </h2>
         <p>
-          These Terms are governed by applicable laws. Any disputes arising from these Terms or your use of Clockitt should first be directed to us at <a href="mailto:contact@useclockitt.app" className="font-semibold text-primary underline">contact@useclockitt.app</a>. We will make reasonable efforts to resolve disputes informally before any formal legal proceedings are initiated.
+          These Terms are governed by applicable laws. Any disputes arising from these Terms or your use of Clockitt should first be directed to us at <a href="mailto:clockittapp@gmail.com" className="font-semibold text-primary underline">clockittapp@gmail.com</a>. We will make reasonable efforts to resolve disputes informally before any formal legal proceedings are initiated.
         </p>
       </section>
 
@@ -253,7 +253,7 @@ export function TermsSections() {
           13. Contact Information
         </h2>
         <div className="rounded-2xl border border-border/70 bg-card/60 p-5 space-y-2 backdrop-blur-md">
-          <p><strong className="text-ink">Email:</strong> <a href="mailto:contact@useclockitt.app" className="text-primary underline font-medium">contact@useclockitt.app</a></p>
+          <p><strong className="text-ink">Email:</strong> <a href="mailto:clockittapp@gmail.com" className="text-primary underline font-medium">clockittapp@gmail.com</a></p>
           <p><strong className="text-ink">Website:</strong> <a href="https://clockitt.app" target="_blank" rel="noreferrer noopener" className="text-primary underline font-medium inline-flex items-center gap-1">clockitt.app <ExternalLink className="h-3 w-3" /></a></p>
           <p><strong className="text-ink">X (Twitter):</strong> <a href="https://x.com/clockittapp" target="_blank" rel="noreferrer noopener" className="text-primary underline font-medium inline-flex items-center gap-1">@clockittapp <ExternalLink className="h-3 w-3" /></a></p>
           <p><strong className="text-ink">Developer:</strong> Daniel — Solo Founder, Clockitt</p>

@@ -64,7 +64,7 @@ export const organizationLd = {
   foundingDate: "2026",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "contact@clockitt.app",
+    email: "clockittapp@gmail.com",
     contactType: "customer support",
     availableLanguage: "English",
   },

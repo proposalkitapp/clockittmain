@@ -450,10 +450,10 @@ function Index() {
                     <span><strong>Data Provenance:</strong> Engineered by the Clockitt Team &bull; Privacy-First Architecture &bull; GDPR &amp; CCPA Compliant</span>
                   </div>
                   <a
-                    href="mailto:support@clockitt.app"
+                    href="mailto:clockittapp@gmail.com"
                     className="font-semibold text-ink underline hover:text-amber-deep transition-colors"
                   >
-                    Questions? Contact support@clockitt.app &rarr;
+                    Questions? Contact clockittapp@gmail.com &rarr;
                   </a>
                 </div>
               </TiltCard>

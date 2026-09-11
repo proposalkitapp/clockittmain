@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AccountabilityPartnerRouteImport } from './routes/accountability-partner'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DanielwashereRouteImport } from './routes/danielwashere'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -37,6 +38,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AccountabilityPartnerRoute = AccountabilityPartnerRouteImport.update({
   id: '/accountability-partner',
   path: '/accountability-partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DanielwashereRoute = DanielwashereRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
+  '/contact': typeof ContactRoute
   '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
+  '/contact': typeof ContactRoute
   '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
+  '/contact': typeof ContactRoute
   '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/accountability-partner'
+    | '/contact'
     | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/accountability-partner'
+    | '/contact'
     | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/$'
     | '/accountability-partner'
+    | '/contact'
     | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
@@ -147,6 +159,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
   AccountabilityPartnerRoute: typeof AccountabilityPartnerRoute
+  ContactRoute: typeof ContactRoute
   DanielwashereRoute: typeof DanielwashereRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/accountability-partner'
       fullPath: '/accountability-partner'
       preLoaderRoute: typeof AccountabilityPartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/danielwashere': {
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
   AccountabilityPartnerRoute: AccountabilityPartnerRoute,
+  ContactRoute: ContactRoute,
   DanielwashereRoute: DanielwashereRoute,
   HowItWorksRoute: HowItWorksRoute,
   PrivacyRoute: PrivacyRoute,

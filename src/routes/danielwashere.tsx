@@ -2,35 +2,37 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 
 import { supabase } from "@/integrations/supabase/client";
-import { canonical, pageMeta } from "@/lib/site";
+import { checkIsAdmin } from "@/lib/auth";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export const Route = createFileRoute("/auth")({
+export const Route = createFileRoute("/danielwashere")({
   head: () => ({
-    meta: pageMeta({
-      title: "Sign in — Clockitt Waitlist Dashboard",
-      description:
-        "Sign in to the private Clockitt dashboard to review waitlist signups and early access activity.",
-      path: "/auth",
-    }),
-    links: canonical("/auth"),
+    meta: [
+      { title: "Sign in — Clockitt Waitlist Dashboard" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
   }),
-  component: AuthPage,
+  component: AdminAuthPage,
 });
 
-function AuthPage() {
+function AdminAuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/dashboard" });
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (data?.user) {
+        const isAdmin = await checkIsAdmin(data.user.id);
+        if (isAdmin) {
+          navigate({ to: "/dashboard" });
+        } else {
+          await supabase.auth.signOut();
+        }
+      }
     });
   }, [navigate]);
 
@@ -38,34 +40,34 @@ function AuthPage() {
     e.preventDefault();
     setBusy(true);
     setError(null);
-    setNotice(null);
 
-    if (mode === "signin") {
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-      setBusy(false);
-      if (signInError) {
-        setError(signInError.message);
-        return;
-      }
-      navigate({ to: "/dashboard" });
-      return;
-    }
-
-    const { data, error: signUpError } = await supabase.auth.signUp({
-      email,
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
       password,
-      options: { emailRedirectTo: `${window.location.origin}/dashboard` },
     });
+
+    if (signInError) {
+      setBusy(false);
+      setError(signInError.message);
+      return;
+    }
+
+    if (!data.user) {
+      setBusy(false);
+      setError("Sign in failed. Please try again.");
+      return;
+    }
+
+    const isAdmin = await checkIsAdmin(data.user.id);
+    if (!isAdmin) {
+      await supabase.auth.signOut();
+      setBusy(false);
+      setError("Access denied: You do not have administrator permissions.");
+      return;
+    }
+
     setBusy(false);
-    if (signUpError) {
-      setError(signUpError.message);
-      return;
-    }
-    if (data.session) {
-      navigate({ to: "/dashboard" });
-      return;
-    }
-    setNotice("Check your inbox to confirm your address, then sign in.");
+    navigate({ to: "/dashboard" });
   }
 
   return (
@@ -73,9 +75,7 @@ function AuthPage() {
       <SiteHeader />
       <main id="main-content" className="flex-1 px-5 py-16 sm:px-8">
         <div className="mx-auto w-full max-w-md rounded-3xl border border-border/80 bg-card/70 p-6 shadow-lg backdrop-blur-xl sm:p-8">
-          <h1 className="text-2xl font-extrabold tracking-tight">
-            {mode === "signin" ? "Sign in" : "Create your account"}
-          </h1>
+          <h1 className="text-2xl font-extrabold tracking-tight">Sign in</h1>
           <p className="mt-2 text-sm text-ink-soft">
             Private access to your Clockitt waitlist dashboard.
           </p>
@@ -89,6 +89,7 @@ function AuthPage() {
                 id="auth-email"
                 type="email"
                 required
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-amber-deep"
@@ -103,6 +104,7 @@ function AuthPage() {
                 type="password"
                 required
                 minLength={6}
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-amber-deep"
@@ -113,7 +115,7 @@ function AuthPage() {
               disabled={busy}
               className="cta-gradient w-full rounded-xl px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg disabled:opacity-70"
             >
-              {busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
+              {busy ? "Signing in…" : "Sign in"}
             </button>
           </form>
 
@@ -122,19 +124,6 @@ function AuthPage() {
               {error}
             </p>
           )}
-          {notice && <p className="mt-4 text-sm font-medium text-ink">{notice}</p>}
-
-          <button
-            type="button"
-            onClick={() => {
-              setMode(mode === "signin" ? "signup" : "signin");
-              setError(null);
-              setNotice(null);
-            }}
-            className="mt-6 text-sm font-semibold text-ink underline underline-offset-4 hover:text-amber-deep"
-          >
-            {mode === "signin" ? "Need an account? Create one" : "Already have an account? Sign in"}
-          </button>
         </div>
       </main>
       <SiteFooter />

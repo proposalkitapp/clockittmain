@@ -13,7 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AccountabilityPartnerRouteImport } from './routes/accountability-partner'
-import { Route as AuthRouteImport } from './routes/auth'
+import { Route as DanielwashereRouteImport } from './routes/danielwashere'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -39,9 +39,9 @@ const AccountabilityPartnerRoute = AccountabilityPartnerRouteImport.update({
   path: '/accountability-partner',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
+const DanielwashereRoute = DanielwashereRouteImport.update({
+  id: '/danielwashere',
+  path: '/danielwashere',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -74,7 +74,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
-  '/auth': typeof AuthRoute
+  '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -85,7 +85,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
-  '/auth': typeof AuthRoute
+  '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -98,7 +98,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
   '/accountability-partner': typeof AccountabilityPartnerRoute
-  '/auth': typeof AuthRoute
+  '/danielwashere': typeof DanielwashereRoute
   '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -111,7 +111,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/accountability-partner'
-    | '/auth'
+    | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
     | '/sitemap.xml'
@@ -122,7 +122,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/accountability-partner'
-    | '/auth'
+    | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
     | '/sitemap.xml'
@@ -134,7 +134,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/$'
     | '/accountability-partner'
-    | '/auth'
+    | '/danielwashere'
     | '/how-it-works'
     | '/privacy'
     | '/sitemap.xml'
@@ -147,7 +147,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
   AccountabilityPartnerRoute: typeof AccountabilityPartnerRoute
-  AuthRoute: typeof AuthRoute
+  DanielwashereRoute: typeof DanielwashereRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -184,11 +184,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountabilityPartnerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/danielwashere': {
+      id: '/danielwashere'
+      path: '/danielwashere'
+      fullPath: '/danielwashere'
+      preLoaderRoute: typeof DanielwashereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -245,7 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
   AccountabilityPartnerRoute: AccountabilityPartnerRoute,
-  AuthRoute: AuthRoute,
+  DanielwashereRoute: DanielwashereRoute,
   HowItWorksRoute: HowItWorksRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

@@ -92,7 +92,7 @@ function Dashboard() {
                 type="button"
                 onClick={async () => {
                   await supabase.auth.signOut();
-                  navigate({ to: "/auth" });
+                  navigate({ to: "/danielwashere" });
                 }}
                 className="rounded-xl border border-border bg-card/70 px-4 py-2 text-sm font-semibold backdrop-blur-xl"
               >

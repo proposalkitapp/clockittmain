@@ -112,7 +112,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
+            __html: `(function(){try{if(window.location.hostname==='contact.clockitt.app'){window.location.replace('https://clockitt.app/contact'+(window.location.pathname==='/'?'':window.location.pathname)+window.location.search+window.location.hash);return;}var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
           }}
         />
         <HeadContent />

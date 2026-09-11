@@ -88,6 +88,18 @@ function withSecurityHeaders(response: Response): Response {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      const host = request.headers.get("host") || url.hostname;
+
+      // Automatically redirect contact.clockitt.app to clockitt.app/contact
+      if (host.startsWith("contact.clockitt.app") || url.hostname === "contact.clockitt.app") {
+        const target =
+          url.pathname === "/" || url.pathname === ""
+            ? "https://clockitt.app/contact"
+            : `https://clockitt.app${url.pathname}${url.search}`;
+        return Response.redirect(target, 301);
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));

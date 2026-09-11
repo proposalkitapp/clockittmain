@@ -1,4 +1,4 @@
-export const SITE_URL = "https://clockittnew.lovable.app";
+export const SITE_URL = "https://clockitt.app";
 export const SITE_NAME = "Clockitt";
 export const OG_IMAGE = `${SITE_URL}/og-clockitt.png`;
 

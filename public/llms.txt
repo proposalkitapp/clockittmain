@@ -4,13 +4,14 @@
 
 ## Pages
 
-- [Home](https://clockittnew.lovable.app/): Product overview and waitlist signup.
-- [How it works](https://clockittnew.lovable.app/how-it-works): The four-step Clockitt loop — wake up, set a finish line, check in, close the loop.
-- [Accountability partner app](https://clockittnew.lovable.app/accountability-partner): How Clockitt pairs you with a real person for daily goal check-ins.
-- [Privacy](https://clockittnew.lovable.app/privacy): What waitlist data is collected and how to remove it.
+- [Home](https://clockitt.app/): Product overview and waitlist signup.
+- [How it works](https://clockitt.app/how-it-works): The four-step Clockitt loop — wake up, set a finish line, check in, close the loop.
+- [Accountability partner app](https://clockitt.app/accountability-partner): How Clockitt pairs you with a real person for daily goal check-ins.
+- [Privacy](https://clockitt.app/privacy): What waitlist data is collected and how to remove it.
+- [Terms](https://clockitt.app/terms): Terms of service and usage guidelines.
 
 ## Optional
 
-- [Sitemap](https://clockittnew.lovable.app/sitemap.xml)
+- [Sitemap](https://clockitt.app/sitemap.xml)
 - X: https://x.com/clockittapp
 - TikTok: https://tiktok.com/useclockittapp

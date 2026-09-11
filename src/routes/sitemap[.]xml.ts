@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const BASE_URL = "https://clockittnew.lovable.app";
+const BASE_URL = "https://clockitt.app";
 
 const routes = [
   { path: "/", priority: "1.0", changefreq: "weekly" },

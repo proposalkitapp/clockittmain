@@ -163,9 +163,15 @@ function Index() {
               <Floating3DMascot src={mascot} alt="Clockitt rooster mascot" />
             </div>
 
-            {/* 3D Glass Badge */}
+            {/* 3D Glass Badge CTA */}
             <div className="mb-6 inline-block">
-              <Alarm3DBadge>Get Early Access To Clockitt</Alarm3DBadge>
+              <a
+                href="#waitlist"
+                aria-label="Jump to Clockitt early access waitlist signup"
+                className="inline-block transition-transform hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber"
+              >
+                <Alarm3DBadge>Get Early Access To Clockitt &rarr;</Alarm3DBadge>
+              </a>
             </div>
 
             {/* Hero Main Heading with Entrance Animation */}
@@ -216,6 +222,7 @@ function Index() {
                       </label>
                       <input
                         id="email"
+                        name="email"
                         type="email"
                         required
                         value={email}
@@ -225,12 +232,14 @@ function Index() {
                       />
                       <motion.button
                         type="submit"
-                        disabled={submitting || !hydrated}
+                        name="join-waitlist"
+                        aria-label="Join Clockitt early access waitlist"
+                        disabled={submitting}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-all disabled:opacity-70"
                       >
-                        {!hydrated ? "Loading…" : submitting ? "Joining…" : "Join the waitlist"}
+                        {submitting ? "Joining…" : "Join the waitlist"}
                         <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                       </motion.button>
                     </form>

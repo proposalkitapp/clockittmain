@@ -59,11 +59,23 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="/#waitlist"
+            className="cta-gradient ml-2 inline-flex items-center justify-center rounded-full px-4 py-1.5 text-xs font-bold text-primary-foreground shadow-md transition-all hover:scale-105 active:scale-95"
+          >
+            Join Waitlist
+          </a>
         </nav>
 
         <div className="ml-auto h-px flex-1 bg-gradient-to-r from-border to-transparent md:ml-3 md:hidden" />
 
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          <a
+            href="/#waitlist"
+            className="cta-gradient inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-bold text-primary-foreground shadow-sm transition-all md:hidden hover:scale-105 active:scale-95"
+          >
+            Join Waitlist
+          </a>
           <ThemeToggle />
           {[
             { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },

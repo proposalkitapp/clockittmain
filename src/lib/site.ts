@@ -113,19 +113,46 @@ export const webSiteLd = {
     "Official website for Clockitt — the AI photo-verified goal accountability and persistent alarm app.",
 };
 
-export function faqLd(items: { q: string; a: string }[]) {
+export function webPageLd({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}) {
   return {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}/#faq`,
-    mainEntity: items.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.a,
-      },
-    })),
+    "@type": "WebPage",
+    "@id": `${SITE_URL}${path}#webpage`,
+    url: `${SITE_URL}${path}`,
+    name: title,
+    description,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#software` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en-US",
+    datePublished: "2026-09-01",
+    dateModified: "2026-09-11",
+  };
+}
+
+export function homeGraphLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationLd,
+      softwareAppLd,
+      webSiteLd,
+      webPageLd({
+        title: "Clockitt — AI Photo Proof Accountability & Habit Alarm App",
+        description:
+          "Clockitt is the AI-powered goal accountability app and un-snoozeable alarm that requires verified photo proof to silence. Lock in $5/month founder pricing.",
+        path: "/",
+      }),
+      faqLd(faqs),
+    ],
   };
 }
 

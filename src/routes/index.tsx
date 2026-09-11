@@ -5,7 +5,7 @@ import { AlarmClock, BadgeCheck, Camera, Check, CheckCircle2, Cpu, DollarSign, F
 
 import { joinWaitlist } from "@/lib/waitlist.functions";
 import { supabase } from "@/integrations/supabase/client";
-import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
+import { canonical, homeGraphLd, pageMeta } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { TiltCard } from "@/components/ui/tilt-card";
@@ -58,10 +58,7 @@ export const Route = createFileRoute("/")({
     ],
     links: canonical("/"),
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify(organizationLd) },
-      { type: "application/ld+json", children: JSON.stringify(softwareAppLd) },
-      { type: "application/ld+json", children: JSON.stringify(webSiteLd) },
-      { type: "application/ld+json", children: JSON.stringify(faqLd(faqs)) },
+      { type: "application/ld+json", children: JSON.stringify(homeGraphLd(faqs)) },
     ],
   }),
 
@@ -186,6 +183,9 @@ function Index() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl"
             >
+              <span className="block text-sm sm:text-lg font-bold uppercase tracking-[0.16em] text-amber-deep mb-2 sm:mb-3">
+                Clockitt &bull; AI Goal Accountability &amp; Habit Alarm
+              </span>
               The alarm that won&rsquo;t shut up{" "}
               <span className="bg-gradient-to-br from-amber to-amber-deep bg-clip-text text-transparent">
                 until you prove it.
@@ -198,7 +198,7 @@ function Index() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
             >
-              <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by AI. No proof, no silence.
+              <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by Claude Vision AI. No proof, no silence.
             </motion.p>
 
             <motion.div

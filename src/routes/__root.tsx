@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Clockitt gives your goals a real place to land: gentle structure, shared accountability, and momentum to see every task through. Join the waitlist.",
+          "Clockitt is the AI-powered goal accountability app and un-snoozeable alarm that requires verified photo proof to silence. Join the waitlist.",
       },
       { name: "author", content: "Clockitt" },
       { property: "og:type", content: "website" },
@@ -110,7 +110,6 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>Clockitt — Accountability App to Finish What You Start</title>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,

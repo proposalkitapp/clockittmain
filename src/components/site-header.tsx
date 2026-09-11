@@ -1,4 +1,7 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { ThemeToggle } from "./theme-toggle";
 
@@ -35,10 +38,35 @@ const navLinks = [
 ] as const;
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const routerState = useRouterState();
+  const currentPath = routerState.location.pathname;
+
+  // Automatically close mobile menu on route navigation
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPath]);
+
+  // Close on window resize if crossing to desktop breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-30 border-b border-border/60 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:gap-4 sm:px-8">
-        <Link to="/" className="flex shrink-0 items-center gap-2">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl transition-all">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-8">
+        {/* Brand logo & wordmark */}
+        <Link
+          to="/"
+          onClick={() => setOpen(false)}
+          className="flex shrink-0 items-center gap-2 focus:outline-none"
+        >
           <img
             src={mascot}
             alt="Clockitt rooster mascot logo"
@@ -46,16 +74,17 @@ export function SiteHeader() {
             height={32}
             className="h-8 w-8"
           />
-          <Wordmark className="text-sm sm:text-lg" />
+          <Wordmark className="text-base sm:text-lg" />
         </Link>
 
-        <nav aria-label="Main" className="ml-auto hidden items-center gap-1 md:flex">
+        {/* Desktop Navigation */}
+        <nav aria-label="Main" className="hidden items-center gap-1.5 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              activeProps={{ className: "bg-accent" }}
-              className="rounded-full px-3 py-1.5 text-sm font-semibold text-ink-soft transition-colors hover:bg-accent hover:text-ink"
+              activeProps={{ className: "bg-accent text-ink font-bold" }}
+              className="rounded-full px-3.5 py-1.5 text-sm font-semibold text-ink-soft transition-colors hover:bg-accent hover:text-ink"
             >
               {link.label}
             </Link>
@@ -68,15 +97,8 @@ export function SiteHeader() {
           </a>
         </nav>
 
-        <div className="ml-auto h-px flex-1 bg-gradient-to-r from-border to-transparent md:ml-3 md:hidden" />
-
-        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-          <a
-            href="/#waitlist"
-            className="cta-gradient inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-bold text-primary-foreground shadow-sm transition-all md:hidden hover:scale-105 active:scale-95"
-          >
-            Join Waitlist
-          </a>
+        {/* Desktop Actions & Socials */}
+        <div className="hidden items-center gap-1 sm:gap-2 md:flex">
           <ThemeToggle />
           {[
             { Icon: XIcon, href: "https://x.com/clockittapp", label: "Clockitt on X" },
@@ -98,23 +120,88 @@ export function SiteHeader() {
             </a>
           ))}
         </div>
+
+        {/* Mobile Header Controls: ThemeToggle + Hamburger Button */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/80 bg-accent/60 text-ink shadow-sm transition-all active:scale-95"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
-      <nav
-        aria-label="Secondary"
-        className="flex items-center gap-1 overflow-x-auto border-t border-border/60 px-4 py-2 md:hidden"
-      >
-        {navLinks.map((link) => (
-          <Link
-            key={link.to}
-            to={link.to}
-            activeProps={{ className: "bg-accent text-ink" }}
-            className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold text-ink-soft"
+      {/* Expandable Mobile Navigation Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-nav"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-border/70 bg-background/95 backdrop-blur-2xl md:hidden"
           >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
+            <div className="mx-auto max-w-6xl space-y-4 px-5 py-6">
+              <nav aria-label="Mobile Navigation" className="flex flex-col space-y-1.5">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    activeProps={{ className: "bg-accent text-ink font-bold" }}
+                    className="flex items-center justify-between rounded-2xl px-4 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-accent/70 hover:text-ink"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowRight className="h-4 w-4 opacity-60" />
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Join Waitlist CTA inside Mobile Menu */}
+              <div className="pt-2">
+                <a
+                  href="/#waitlist"
+                  onClick={() => setOpen(false)}
+                  className="cta-gradient flex w-full items-center justify-center rounded-2xl px-5 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-all active:scale-[0.98]"
+                >
+                  Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </div>
+
+              {/* Social links & info */}
+              <div className="flex items-center justify-between border-t border-border/50 pt-4 text-xs text-ink-soft">
+                <span>Follow Clockitt:</span>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://x.com/clockittapp"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label="Clockitt on X"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-accent/40 text-ink hover:bg-accent"
+                  >
+                    <XIcon />
+                  </a>
+                  <a
+                    href="https://tiktok.com/useclockittapp"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label="Clockitt on TikTok"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-accent/40 text-ink hover:bg-accent"
+                  >
+                    <TikTokIcon />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

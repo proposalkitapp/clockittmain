@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { AlarmClock, Camera, Check, DollarSign, Flame, HelpCircle, Lock, RefreshCw, ShieldCheck } from "lucide-react";
 
 import { joinWaitlist } from "@/lib/waitlist.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { canonical, faqLd, organizationLd, pageMeta, softwareAppLd, webSiteLd } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -114,12 +115,28 @@ function Index() {
     try {
       const result = await joinWaitlist({ data: { email: value } });
       if (!result.ok) {
-        setError("Something went wrong. Please try again.");
-        return;
+        const { error: directError } = await supabase
+          .from("waitlist_signups")
+          .insert({ email: value });
+        if (directError && directError.code !== "23505") {
+          setError("Something went wrong. Please try again.");
+          return;
+        }
       }
       setJoined(true);
     } catch {
-      setError("Something went wrong. Please try again.");
+      try {
+        const { error: directError } = await supabase
+          .from("waitlist_signups")
+          .insert({ email: value });
+        if (directError && directError.code !== "23505") {
+          setError("Something went wrong. Please try again.");
+          return;
+        }
+        setJoined(true);
+      } catch {
+        setError("Something went wrong. Please try again.");
+      }
     } finally {
       setSubmitting(false);
     }

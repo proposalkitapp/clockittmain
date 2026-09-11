@@ -1,20 +1,16 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 
 export const joinWaitlist = createServerFn({ method: "POST" })
   .inputValidator((data) =>
     z.object({ email: z.string().email().max(255) }).parse(data),
   )
   .handler(async ({ data }) => {
-    const url = process.env["EXTERNAL_SUPABASE_URL"]!;
-    const key = process.env["EXTERNAL_SUPABASE_ANON_KEY"]!;
-    const client = createClient(url, key, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-    const { error } = await client
+    const email = data.email.trim().toLowerCase();
+    const { error } = await supabase
       .from("waitlist_signups")
-      .insert({ email: data.email.trim().toLowerCase() });
+      .insert({ email });
     if (error) {
       console.error("waitlist insert failed", JSON.stringify(error));
       if (error.code === "23505") return { ok: true as const, duplicate: true as const };

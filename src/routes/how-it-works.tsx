@@ -58,38 +58,40 @@ function HowItWorks() {
   return (
     <div className="canvas-gradient flex min-h-screen flex-col text-ink">
       <SiteHeader />
-      <main className="flex-1 px-4 py-10 sm:px-8 sm:py-16">
-        <div className="mx-auto max-w-3xl">
+      <main className="flex-1 px-5 py-12 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-5xl">
           <Breadcrumbs current="How it works" />
-          <h1 className="text-balance text-3xl font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-5xl">
+          <h1 className="text-balance text-3xl font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-5xl md:text-6xl">
             How Clockitt works
           </h1>
-          <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
+          <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-ink-soft sm:text-xl">
             Clockitt is built around one loop: wake up, commit to a finish line, stay
             accountable to someone real, and close the day with something actually done.
           </p>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(({ icon: Icon, title, copy }) => (
-              <section key={title} className="glass-panel rounded-3xl p-5">
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-ink">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <h2 className="text-base font-bold tracking-tight">{title}</h2>
-                <p className="mt-1 text-sm leading-relaxed text-ink-soft">{copy}</p>
+              <section key={title} className="glass-panel rounded-3xl p-6 flex flex-col justify-between">
+                <div>
+                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-ink shadow-sm">
+                    <Icon className="h-5 w-5 text-amber-deep" />
+                  </span>
+                  <h2 className="text-lg font-bold tracking-tight text-ink">{title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{copy}</p>
+                </div>
               </section>
             ))}
           </div>
 
-          <div className="glass-panel mt-10 rounded-3xl p-6 text-center">
-            <h2 className="text-lg font-bold">Want a partner to keep you honest?</h2>
-            <p className="mt-2 text-sm text-ink-soft">
+          <div className="glass-panel mt-12 rounded-3xl p-8 sm:p-10 text-center">
+            <h2 className="text-xl sm:text-2xl font-bold">Want a partner to keep you honest?</h2>
+            <p className="mt-3 text-base text-ink-soft max-w-xl mx-auto">
               Read how Clockitt works as an{" "}
-              <Link to="/accountability-partner" className="font-semibold text-ink underline">
+              <Link to="/accountability-partner" className="font-semibold text-ink underline hover:text-amber-deep">
                 accountability partner app
               </Link>
               , or join the waitlist from the{" "}
-              <Link to="/" className="font-semibold text-ink underline">
+              <Link to="/" className="font-semibold text-ink underline hover:text-amber-deep">
                 home page
               </Link>
               .

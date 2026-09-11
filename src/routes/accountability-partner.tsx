@@ -58,39 +58,41 @@ function AccountabilityPartner() {
   return (
     <div className="canvas-gradient flex min-h-screen flex-col text-ink">
       <SiteHeader />
-      <main className="flex-1 px-4 py-10 sm:px-8 sm:py-16">
-        <div className="mx-auto max-w-3xl">
+      <main className="flex-1 px-5 py-12 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-5xl">
           <Breadcrumbs current="Accountability partner" />
-          <h1 className="text-balance text-3xl font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-5xl">
+          <h1 className="text-balance text-3xl font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-5xl md:text-6xl">
             An accountability partner app for goals you keep abandoning
           </h1>
-          <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
+          <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-ink-soft sm:text-xl">
             Willpower is unreliable. A person waiting on your update is not. Clockitt pairs
             your daily goals with someone who checks in — so starting and finishing stop
             being two different things.
           </p>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {features.map(({ icon: Icon, title, copy }) => (
-              <section key={title} className="glass-panel rounded-3xl p-5">
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-ink">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <h2 className="text-base font-bold tracking-tight">{title}</h2>
-                <p className="mt-1 text-sm leading-relaxed text-ink-soft">{copy}</p>
+              <section key={title} className="glass-panel rounded-3xl p-6 flex flex-col justify-between">
+                <div>
+                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-ink shadow-sm">
+                    <Icon className="h-5 w-5 text-amber-deep" />
+                  </span>
+                  <h2 className="text-lg font-bold tracking-tight text-ink">{title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{copy}</p>
+                </div>
               </section>
             ))}
           </div>
 
-          <div className="glass-panel mt-10 rounded-3xl p-6 text-center">
-            <h2 className="text-lg font-bold">Get early access</h2>
-            <p className="mt-2 text-sm text-ink-soft">
+          <div className="glass-panel mt-12 rounded-3xl p-8 sm:p-10 text-center">
+            <h2 className="text-xl sm:text-2xl font-bold">Get early access</h2>
+            <p className="mt-3 text-base text-ink-soft max-w-xl mx-auto">
               Clockitt is in early access. Join the waitlist on the{" "}
-              <Link to="/" hash="waitlist" className="font-semibold text-ink underline">
+              <Link to="/" hash="waitlist" className="font-semibold text-ink underline hover:text-amber-deep">
                 home page
               </Link>{" "}
               or see{" "}
-              <Link to="/how-it-works" className="font-semibold text-ink underline">
+              <Link to="/how-it-works" className="font-semibold text-ink underline hover:text-amber-deep">
                 how Clockitt works
               </Link>
               .

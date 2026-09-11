@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { AlarmClock, BadgeCheck, Camera, Check, CheckCircle2, Cpu, DollarSign, Flame, HelpCircle, Lock, RefreshCw, Shield, ShieldCheck, Sparkles } from "lucide-react";
+import { AlarmClock, BadgeCheck, Camera, Check, CheckCircle2, Cpu, DollarSign, Flame, HelpCircle, Lock, RefreshCw, Shield, ShieldCheck } from "lucide-react";
 
 import { joinWaitlist } from "@/lib/waitlist.functions";
 import { supabase } from "@/integrations/supabase/client";
@@ -165,8 +165,9 @@ function Index() {
       <SiteHeader />
 
       <main id="main-content" className="flex-1">
-        <section className="relative overflow-hidden px-5 pb-20 pt-10 sm:px-8 sm:pt-16">
-          <div className="mx-auto max-w-3xl text-center">
+        {/* Hero Section (Spacious max-w-5xl) */}
+        <section className="relative overflow-hidden px-5 pb-16 pt-10 sm:px-8 sm:pt-20">
+          <div className="mx-auto max-w-5xl text-center">
             
             {/* Interactive 3D Mascot Floating Hero */}
             <div className="mx-auto mb-6 w-fit">
@@ -189,9 +190,9 @@ function Index() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-balance text-[2.65rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl"
+              className="text-balance text-[2.75rem] font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-6xl md:text-7xl lg:text-[5rem]"
             >
-              <span className="block text-sm sm:text-lg font-bold uppercase tracking-[0.16em] text-amber-deep mb-2 sm:mb-3">
+              <span className="block text-sm sm:text-lg font-bold uppercase tracking-[0.16em] text-amber-deep mb-3 sm:mb-4">
                 Clockitt &bull; AI Goal Accountability &amp; Habit Alarm
               </span>
               The alarm that won&rsquo;t shut up{" "}
@@ -204,7 +205,7 @@ function Index() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-              className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
+              className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-xl"
             >
               <strong>Clockitt</strong> is the AI-powered goal accountability app and persistent alarm. When your deadline fires, it <strong>doesn&rsquo;t stop until you submit photo proof</strong> verified by AI. No proof, no silence.
             </motion.p>
@@ -214,21 +215,21 @@ function Index() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="mx-auto mt-9 max-w-xl scroll-mt-24"
+              className="mx-auto mt-9 max-w-2xl scroll-mt-24"
             >
               {joined ? (
-                <TiltCard className="flex items-center justify-center gap-3 py-5 text-sm font-semibold">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full cta-gradient text-primary-foreground">
-                    <Check className="h-4 w-4" />
+                <TiltCard className="flex items-center justify-center gap-3 py-6 text-base font-semibold">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full cta-gradient text-primary-foreground">
+                    <Check className="h-5 w-5" />
                   </span>
                   You're on the list. We'll wake you when it's time.
                 </TiltCard>
               ) : (
                 <>
-                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-2 shadow-lg backdrop-blur-xl sm:p-3">
+                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-2.5 shadow-xl backdrop-blur-xl sm:p-3.5">
                     <form
                       onSubmit={onSubmit}
-                      className="flex flex-col gap-2 sm:flex-row sm:items-center"
+                      className="flex flex-col gap-2.5 sm:flex-row sm:items-center"
                     >
                       <label htmlFor="email" className="sr-only">
                         Email address
@@ -250,15 +251,15 @@ function Index() {
                         disabled={submitting}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
-                        className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-all disabled:opacity-70"
+                        className="cta-gradient group inline-flex items-center justify-center gap-2 rounded-[1.25rem] px-7 py-4 text-sm font-bold text-primary-foreground shadow-lg transition-all disabled:opacity-70"
                       >
                         {submitting ? "Joining…" : "Join the waitlist"}
                         <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform group-hover:scale-125" />
                       </motion.button>
                     </form>
                   </div>
-                  <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-ink-soft">
-                    <ShieldCheck className="h-3.5 w-3.5 text-amber-deep shrink-0" />
+                  <div className="mt-3.5 flex items-center justify-center gap-2 text-xs text-ink-soft">
+                    <ShieldCheck className="h-4 w-4 text-amber-deep shrink-0" />
                     <span><strong>100% Privacy Protected</strong> &bull; <strong>Zero Spam Guarantee</strong> &bull; <strong>Cancel Anytime</strong></span>
                   </div>
                 </>
@@ -269,7 +270,7 @@ function Index() {
                 </p>
               )}
 
-              <div className="mt-6 flex flex-col items-center gap-3">
+              <div className="mt-7 flex flex-col items-center gap-3">
                 <div className="flex -space-x-2">
                   {[
                     { src: "/avatar-1.jpg", alt: "Clockitt early supporter" },
@@ -291,8 +292,8 @@ function Index() {
                 </p>
               </div>
 
-              {/* 3D Proof Metrics Grid */}
-              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-xl mx-auto text-center">
+              {/* 3D Proof Metrics Grid (Spacious max-w-3xl) */}
+              <div className="mt-10 grid grid-cols-2 gap-3.5 sm:grid-cols-4 max-w-3xl mx-auto text-center">
                 {proofMetrics.map(({ label, value }, idx) => (
                   <motion.div
                     key={label}
@@ -300,308 +301,330 @@ function Index() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + idx * 0.1 }}
                   >
-                    <TiltCard tiltDegree={12} className="p-3 text-center">
-                      <p className="text-xs font-bold text-ink">{value}</p>
-                      <p className="text-[0.65rem] text-ink-soft">{label}</p>
+                    <TiltCard tiltDegree={10} className="p-3.5 sm:p-4 text-center">
+                      <p className="text-sm font-bold text-ink">{value}</p>
+                      <p className="text-[0.7rem] text-ink-soft mt-0.5">{label}</p>
                     </TiltCard>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
-
-            {/* Why Clockitt Works Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-20 text-center"
-            >
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
-                Why Clockitt Works
-              </h2>
-              <p className="mt-2 text-sm text-ink-soft">
-                Accountability designed so snooze is no longer an option.
-              </p>
-            </motion.div>
-
-            {/* 3D Glassmorphism Pillars Grid */}
-            <div className="mt-8 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
-              {pillars.map(({ icon: Icon, title, copy }, idx) => (
-                <motion.div
-                  key={title}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                >
-                  <TiltCard tiltDegree={15} className="h-full p-5">
-                    <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-ink shadow-sm">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-base font-bold tracking-tight text-ink">{title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{copy}</p>
-                  </TiltCard>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Commercial Proof & Guarantees Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-16 text-left"
-            >
-              <TiltCard tiltDegree={6} className="p-6 sm:p-8">
-                <div className="mb-6 flex items-center gap-2">
-                  <ShieldCheck className="h-6 w-6 text-amber-deep" />
-                  <h2 className="text-lg font-bold tracking-tight text-ink sm:text-xl">
-                    Commercial Proof &amp; Privacy Guarantees
-                  </h2>
-                </div>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {trustSignals.map(({ icon: Icon, title, copy }) => (
-                    <div key={title} className="flex flex-col gap-1.5 rounded-2xl bg-card/50 p-4 border border-border/50">
-                      <div className="flex items-center gap-2 font-semibold text-sm text-ink">
-                        <Icon className="h-4 w-4 shrink-0 text-amber-deep" />
-                        <span>{title}</span>
-                      </div>
-                      <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
-                    </div>
-                  ))}
-                </div>
-              </TiltCard>
-            </motion.div>
-
-            {/* AI Verification Methodology & Architecture Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-16 text-left"
-            >
-              <TiltCard tiltDegree={6} className="p-6 sm:p-8">
-                <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border/60 pb-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Cpu className="h-5 w-5 text-amber-deep" />
-                      <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-                        AI Verification Methodology &amp; Security Architecture
-                      </h2>
-                    </div>
-                    <p className="mt-1 text-xs text-ink-soft">
-                      How Clockitt validates goal completion, protects user data, and enforces accountability.
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 text-[0.7rem] font-semibold text-ink-soft bg-accent/60 px-3 py-1.5 rounded-full w-fit">
-                    <BadgeCheck className="h-3.5 w-3.5 text-amber-deep" />
-                    <span>Methodology Reviewed: September 2026</span>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-xs">
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <div className="flex items-center gap-2 font-bold text-ink mb-1.5">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-deep text-[0.65rem] font-bold text-white">1</span>
-                      <h3>Task Goal Definition</h3>
-                    </div>
-                    <p className="text-ink-soft leading-relaxed">
-                      You record a specific daily goal and deadline. The target outcome is stored with cryptographic timestamps.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <div className="flex items-center gap-2 font-bold text-ink mb-1.5">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-deep text-[0.65rem] font-bold text-white">2</span>
-                      <h3>Deadline Alarm Firing</h3>
-                    </div>
-                    <p className="text-ink-soft leading-relaxed">
-                      When the deadline arrives, the persistent alarm fires continuously until a live photo proof submission is received.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <div className="flex items-center gap-2 font-bold text-ink mb-1.5">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-deep text-[0.65rem] font-bold text-white">3</span>
-                      <h3>AI Photo Analysis</h3>
-                    </div>
-                    <p className="text-ink-soft leading-relaxed">
-                      Our AI vision system analyzes the visual attributes of the photo against your committed goal before silencing the alarm.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <div className="flex items-center gap-2 font-bold text-ink mb-1.5">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-deep text-[0.65rem] font-bold text-white">4</span>
-                      <h3>Encrypted Proof Logging</h3>
-                    </div>
-                    <p className="text-ink-soft leading-relaxed">
-                      Verified check-in increments your streak. Proof photos are encrypted with 256-bit SSL and never used for model training.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-accent/40 px-4 py-3 text-xs text-ink-soft border border-border/40">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-amber-deep shrink-0" />
-                    <span><strong>Data Provenance:</strong> Engineered by the Clockitt Team &bull; Privacy-First Architecture &bull; GDPR &amp; CCPA Compliant</span>
-                  </div>
-                  <a
-                    href="mailto:clockittapp@gmail.com"
-                    className="font-semibold text-ink underline hover:text-amber-deep transition-colors"
-                  >
-                    Questions? Contact clockittapp@gmail.com &rarr;
-                  </a>
-                </div>
-              </TiltCard>
-            </motion.div>
-
-            {/* Answer Engine Quick Facts & Core Entity Summary */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-16 text-left"
-            >
-              <TiltCard tiltDegree={6} className="p-6 sm:p-8">
-                <div className="mb-6 text-center sm:text-left">
-                  <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-                    Clockitt at a Glance
-                  </h2>
-                  <p className="mt-1 text-xs text-ink-soft">
-                    Key facts and core specifications for the Clockitt accountability platform.
-                  </p>
-                </div>
-                <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">What is Clockitt?</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      An AI goal accountability app and persistent morning alarm that eliminates snooze by requiring verified photo proof to silence.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Verification Engine</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Clockitt's AI vision system inspects your submitted photo proof in real time to ensure it strictly matches your committed daily task.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Who is Clockitt for?</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Entrepreneurs, students, fitness builders, and professionals wanting unbreakable morning routines and daily habit follow-through.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Pricing & Free Trial</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      $5/month early access founder pricing with a risk-free 3-day free trial before public launch pricing increases.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Accountability Modes</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Solo AI photo verification or dual-partner check-ins with friends, teammates, and study partners.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Streak Momentum</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Five-level streak progression system rewarding consistent verified daily follow-through and habit retention.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Data Privacy & Security</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      256-bit SSL encrypted storage. Verification photos are private, GDPR/CCPA compliant, and never used to train public AI models.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Developer & Provenance</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Designed and built by Daniel (Solo Founder & Developer, Clockitt) for high-accountability productivity.
-                    </dd>
-                  </div>
-                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Freshness & Review</dt>
-                    <dd className="text-ink-soft leading-relaxed">
-                      Version: Early Access (v1.0) • Specification & methodology verified: September 2026.
-                    </dd>
-                  </div>
-                </dl>
-              </TiltCard>
-            </motion.div>
-
-            {/* Frequently Asked Questions Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-16 text-left"
-            >
-              <div className="mb-6 text-center">
-                <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
-                  Frequently Asked Questions
-                </h2>
-                <p className="mt-2 text-sm text-ink-soft">
-                  Everything you need to know about Clockitt early access.
-                </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {faqs.map(({ q, a }, idx) => (
-                  <motion.div
-                    key={q}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  >
-                    <TiltCard tiltDegree={10} className="h-full p-5">
-                      <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1.5">
-                        <HelpCircle className="h-4 w-4 shrink-0 text-amber-deep" />
-                        <h3>{q}</h3>
-                      </div>
-                      <p className="text-xs leading-relaxed text-ink-soft">{a}</p>
-                    </TiltCard>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* In-body Links Bar */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
-              <span className="text-ink-soft">Explore Clockitt:</span>
-              <Link
-                to="/how-it-works"
-                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
-              >
-                How Clockitt works &rarr;
-              </Link>
-              <Link
-                to="/accountability-partner"
-                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
-              >
-                Accountability partner app &rarr;
-              </Link>
-              <Link
-                to="/privacy"
-                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
-              >
-                Privacy policy &rarr;
-              </Link>
-              <Link
-                to="/terms"
-                className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
-              >
-                Terms of service &rarr;
-              </Link>
-            </div>
           </div>
         </section>
+
+        {/* Why Clockitt Works Section (Spacious max-w-6xl) */}
+        <section className="mx-auto max-w-6xl px-5 sm:px-8 mt-16 sm:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+              Why Clockitt Works
+            </h2>
+            <p className="mt-2 text-base text-ink-soft max-w-xl mx-auto">
+              Accountability designed so snooze is no longer an option.
+            </p>
+          </motion.div>
+
+          {/* 3D Glassmorphism Pillars 4-Card Grid */}
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map(({ icon: Icon, title, copy }, idx) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <TiltCard tiltDegree={12} className="h-full p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-ink shadow-sm">
+                      <Icon className="h-5 w-5 text-amber-deep" />
+                    </span>
+                    <h3 className="text-lg font-bold tracking-tight text-ink">{title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{copy}</p>
+                  </div>
+                </TiltCard>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Commercial Proof & Guarantees Section (Spacious max-w-6xl) */}
+        <section className="mx-auto max-w-6xl px-5 sm:px-8 mt-16 sm:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <TiltCard tiltDegree={6} className="p-6 sm:p-10">
+              <div className="mb-8 flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
+                  <ShieldCheck className="h-6 w-6 text-amber-deep" />
+                </span>
+                <div>
+                  <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                    Commercial Proof &amp; Privacy Guarantees
+                  </h2>
+                  <p className="text-xs text-ink-soft mt-0.5">Built with security and consumer protection from day one.</p>
+                </div>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {trustSignals.map(({ icon: Icon, title, copy }) => (
+                  <div key={title} className="flex flex-col gap-2 rounded-2xl bg-card/50 p-5 border border-border/50">
+                    <div className="flex items-center gap-2 font-semibold text-sm text-ink">
+                      <Icon className="h-4 w-4 shrink-0 text-amber-deep" />
+                      <span>{title}</span>
+                    </div>
+                    <p className="text-xs leading-relaxed text-ink-soft">{copy}</p>
+                  </div>
+                ))}
+              </div>
+            </TiltCard>
+          </motion.div>
+        </section>
+
+        {/* AI Verification Methodology & Architecture Section (Spacious max-w-6xl) */}
+        <section className="mx-auto max-w-6xl px-5 sm:px-8 mt-16 sm:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <TiltCard tiltDegree={6} className="p-6 sm:p-10">
+              <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-border/60 pb-5">
+                <div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent">
+                      <Cpu className="h-5 w-5 text-amber-deep" />
+                    </span>
+                    <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                      AI Verification Methodology &amp; Security Architecture
+                    </h2>
+                  </div>
+                  <p className="mt-1 text-xs text-ink-soft sm:text-sm">
+                    How Clockitt validates goal completion, protects user data, and enforces accountability.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-ink-soft bg-accent/60 px-3.5 py-1.5 rounded-full w-fit">
+                  <BadgeCheck className="h-4 w-4 text-amber-deep" />
+                  <span>Methodology Reviewed: September 2026</span>
+                </div>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 text-xs">
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <div className="flex items-center gap-2.5 font-bold text-ink mb-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-deep text-xs font-bold text-white">1</span>
+                    <h3 className="text-sm">Task Goal Definition</h3>
+                  </div>
+                  <p className="text-ink-soft leading-relaxed">
+                    You record a specific daily goal and deadline. The target outcome is stored with cryptographic timestamps.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <div className="flex items-center gap-2.5 font-bold text-ink mb-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-deep text-xs font-bold text-white">2</span>
+                    <h3 className="text-sm">Deadline Alarm Firing</h3>
+                  </div>
+                  <p className="text-ink-soft leading-relaxed">
+                    When the deadline arrives, the persistent alarm fires continuously until a live photo proof submission is received.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <div className="flex items-center gap-2.5 font-bold text-ink mb-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-deep text-xs font-bold text-white">3</span>
+                    <h3 className="text-sm">AI Photo Analysis</h3>
+                  </div>
+                  <p className="text-ink-soft leading-relaxed">
+                    Our AI vision system analyzes the visual attributes of the photo against your committed goal before silencing the alarm.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <div className="flex items-center gap-2.5 font-bold text-ink mb-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-deep text-xs font-bold text-white">4</span>
+                    <h3 className="text-sm">Encrypted Proof Logging</h3>
+                  </div>
+                  <p className="text-ink-soft leading-relaxed">
+                    Verified check-in increments your streak. Proof photos are encrypted with 256-bit SSL and never used for model training.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-accent/40 px-5 py-3.5 text-xs text-ink-soft border border-border/40">
+                <div className="flex items-center gap-2.5">
+                  <Shield className="h-4 w-4 text-amber-deep shrink-0" />
+                  <span><strong>Data Provenance:</strong> Engineered by the Clockitt Team &bull; Privacy-First Architecture &bull; GDPR &amp; CCPA Compliant</span>
+                </div>
+                <a
+                  href="mailto:clockittapp@gmail.com"
+                  className="font-semibold text-ink underline hover:text-amber-deep transition-colors"
+                >
+                  Questions? Contact clockittapp@gmail.com &rarr;
+                </a>
+              </div>
+            </TiltCard>
+          </motion.div>
+        </section>
+
+        {/* Answer Engine Quick Facts & Core Entity Summary (Spacious max-w-6xl) */}
+        <section className="mx-auto max-w-6xl px-5 sm:px-8 mt-16 sm:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <TiltCard tiltDegree={6} className="p-6 sm:p-10">
+              <div className="mb-8 text-center sm:text-left">
+                <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                  Clockitt at a Glance
+                </h2>
+                <p className="mt-1 text-xs text-ink-soft sm:text-sm">
+                  Key facts and core specifications for the Clockitt accountability platform.
+                </p>
+              </div>
+              <dl className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">What is Clockitt?</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    An AI goal accountability app and persistent morning alarm that eliminates snooze by requiring verified photo proof to silence.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Verification Engine</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Clockitt's AI vision system inspects your submitted photo proof in real time to ensure it strictly matches your committed daily task.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Who is Clockitt for?</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Entrepreneurs, students, fitness builders, and professionals wanting unbreakable morning routines and daily habit follow-through.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Pricing & Free Trial</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    $5/month early access founder pricing with a risk-free 3-day free trial before public launch pricing increases.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Accountability Modes</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Solo AI photo verification or dual-partner check-ins with friends, teammates, and study partners.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Streak Momentum</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Five-level streak progression system rewarding consistent verified daily follow-through and habit retention.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Data Privacy & Security</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    256-bit SSL encrypted storage. Verification photos are private, GDPR/CCPA compliant, and never used to train public AI models.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Developer & Provenance</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Designed and built by Daniel (Solo Founder & Developer, Clockitt) for high-accountability productivity.
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-card/60 p-5 border border-border/60">
+                  <dt className="font-bold text-sm text-ink mb-1.5">Freshness & Review</dt>
+                  <dd className="text-ink-soft leading-relaxed text-xs">
+                    Version: Early Access (v1.0) • Specification & methodology verified: September 2026.
+                  </dd>
+                </div>
+              </dl>
+            </TiltCard>
+          </motion.div>
+        </section>
+
+        {/* Frequently Asked Questions Grid (Spacious max-w-5xl) */}
+        <section className="mx-auto max-w-5xl px-5 sm:px-8 mt-16 sm:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-2 text-base text-ink-soft max-w-xl mx-auto">
+              Everything you need to know about Clockitt early access.
+            </p>
+          </motion.div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {faqs.map(({ q, a }, idx) => (
+              <motion.div
+                key={q}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <TiltCard tiltDegree={10} className="h-full p-6">
+                  <div className="flex items-center gap-2.5 font-bold text-sm text-ink mb-2">
+                    <HelpCircle className="h-4 w-4 shrink-0 text-amber-deep" />
+                    <h3 className="text-base font-bold">{q}</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm leading-relaxed text-ink-soft">{a}</p>
+                </TiltCard>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* In-body Links Bar */}
+        <div className="mx-auto max-w-4xl mt-16 pb-16 px-5 text-center text-sm font-semibold">
+          <span className="text-ink-soft mr-2">Explore Clockitt:</span>
+          <div className="inline-flex flex-wrap items-center justify-center gap-4 mt-2 sm:mt-0">
+            <Link
+              to="/how-it-works"
+              className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+            >
+              How Clockitt works &rarr;
+            </Link>
+            <Link
+              to="/accountability-partner"
+              className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+            >
+              Accountability partner app &rarr;
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+            >
+              Contact us &rarr;
+            </Link>
+            <Link
+              to="/privacy"
+              className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+            >
+              Privacy policy &rarr;
+            </Link>
+            <Link
+              to="/terms"
+              className="inline-flex items-center gap-1 text-ink underline underline-offset-4 transition-colors hover:text-amber-deep"
+            >
+              Terms of service &rarr;
+            </Link>
+          </div>
+        </div>
       </main>
 
       <SiteFooter />

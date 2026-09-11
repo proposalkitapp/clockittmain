@@ -56,6 +56,18 @@ export const organizationLd = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.png`,
+  founder: {
+    "@type": "Person",
+    name: "Daniel",
+    jobTitle: "Solo Founder & Developer",
+  },
+  foundingDate: "2026",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@clockitt.app",
+    contactType: "customer support",
+    availableLanguage: "English",
+  },
   description:
     "Clockitt is an AI-powered goal accountability and alarm software company helping users achieve daily habits and finish tasks through verified photo proof.",
   sameAs: ["https://x.com/clockittapp", "https://tiktok.com/useclockittapp"],
@@ -77,6 +89,11 @@ export const softwareAppLd = {
   applicationSubCategory: "Accountability & Task Management",
   operatingSystem: "iOS, Android, Web",
   url: SITE_URL,
+  author: {
+    "@type": "Person",
+    name: "Daniel",
+    jobTitle: "Solo Founder & Developer",
+  },
   publisher: {
     "@id": `${SITE_URL}/#organization`,
   },
@@ -161,7 +178,7 @@ export function homeGraphLd(faqs: { q: string; a: string }[]) {
       softwareAppLd,
       webSiteLd,
       webPageLd({
-        title: "Clockitt — AI Photo Proof Accountability & Habit Alarm App",
+        title: "Clockitt — AI Photo Proof Goal Accountability & Habit Alarm App",
         description:
           "Clockitt is the AI-powered goal accountability app and un-snoozeable alarm that requires verified photo proof to silence. Lock in $5/month founder pricing.",
         path: "/",

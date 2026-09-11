@@ -17,27 +17,35 @@ const mascot = "/clockitt-mascot.png";
 const faqs = [
   {
     q: "What is Clockitt?",
-    a: "Clockitt is an AI-powered goal accountability app and persistent alarm designed to eliminate procrastination. When an alarm fires at your deadline, it continues ringing until you submit photo proof that Claude Vision AI verifies against your committed task.",
+    a: "Clockitt is an AI-powered goal accountability app and persistent morning alarm designed to eliminate procrastination and snooze habits. When an alarm fires at your deadline, it continues ringing until you submit live photo proof verified by Claude Vision AI.",
   },
   {
-    q: "How does photo proof verification work?",
-    a: "When your alarm fires at your deadline, you take a quick photo of your finished task. Claude Vision AI analyzes the photo in real time to verify it matches your committed goal before silencing the alarm.",
+    q: "How does AI photo proof verification work?",
+    a: "When your alarm fires at your deadline, you capture a photo of your completed task. Claude Vision AI analyzes the image in real time to verify visual alignment with your committed goal before silencing the alarm.",
   },
   {
     q: "What happens if I fail to submit proof or want to snooze?",
-    a: "Clockitt eliminates the traditional snooze button. The alarm keeps firing until valid photo proof is submitted and verified, ensuring commitments cannot be brushed aside.",
+    a: "Clockitt eliminates the traditional snooze button. The alarm continues firing until valid photo proof is submitted and verified by AI, ensuring commitments cannot be avoided or delayed.",
+  },
+  {
+    q: "Who is Clockitt designed for?",
+    a: "Clockitt is designed for entrepreneurs, students, fitness enthusiasts, and professionals who struggle with morning alarms, task procrastination, and unverified habit tracking.",
   },
   {
     q: "How much does Clockitt cost and is there a free trial?",
-    a: "Early access waitlist members receive a risk-free 3-day free trial and lock in a founder rate of $5/month before public launch rates increase.",
+    a: "Early access waitlist members receive a risk-free 3-day free trial and lock in a lifetime founder rate of $5/month before public launch pricing increases.",
   },
   {
     q: "Can I use Clockitt with an accountability partner?",
-    a: "Yes. In addition to AI verification, Clockitt allows you to pair with friends, teammates, or study partners for shared check-ins and mutual streak accountability.",
+    a: "Yes. In addition to solo AI photo verification, Clockitt allows you to pair with friends, teammates, or study partners for dual check-ins and mutual streak accountability.",
+  },
+  {
+    q: "How is Clockitt different from standard habit trackers and alarm clocks?",
+    a: "Standard habit apps rely on the honor system where you can check off boxes without doing the work, and standard alarms let you snooze endlessly. Clockitt requires verified visual proof verified by AI before silence is granted.",
   },
   {
     q: "Are my photos, goals, and personal data kept private?",
-    a: "Yes. All verification photos and goals are protected with 256-bit SSL encryption. Photos are used strictly for AI verification and are never shared publicly or sold.",
+    a: "Yes. All verification photos and daily goals are protected with 256-bit SSL encryption. Photos are used exclusively for verification and are never shared publicly, sold, or used to train public AI models.",
   },
 ];
 
@@ -45,9 +53,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       ...pageMeta({
-        title: "Clockitt — AI Photo Proof Accountability & Habit Alarm App",
+        title: "Clockitt — AI Photo Proof Goal Accountability & Habit Alarm App",
         description:
-          "Clockitt is the accountability app and alarm that won't shut up until you submit AI-verified photo proof of your finished goal. Lock in $5/month founder access.",
+          "Clockitt is the AI-powered goal accountability app and un-snoozeable alarm that requires verified photo proof to silence. Lock in $5/month founder pricing.",
         path: "/",
       }),
       {
@@ -472,19 +480,25 @@ function Index() {
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <dt className="font-bold text-ink mb-1">What is Clockitt?</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      An AI goal accountability app and persistent alarm that eliminates snooze by requiring verified photo proof to silence.
+                      An AI goal accountability app and persistent morning alarm that eliminates snooze by requiring verified photo proof to silence.
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <dt className="font-bold text-ink mb-1">Verification Engine</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      Claude Vision AI inspects your submitted photo in real time to ensure it matches your committed daily task.
+                      Claude Vision AI inspects your submitted photo proof in real time to ensure it strictly matches your committed daily task.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Who is Clockitt for?</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Entrepreneurs, students, fitness builders, and professionals wanting unbreakable morning routines and daily habit follow-through.
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <dt className="font-bold text-ink mb-1">Pricing & Free Trial</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      $5/month early access founder pricing with a risk-free 3-day free trial before public launch.
+                      $5/month early access founder pricing with a risk-free 3-day free trial before public launch pricing increases.
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
@@ -496,13 +510,25 @@ function Index() {
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
                     <dt className="font-bold text-ink mb-1">Streak Momentum</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      Five-level streak system rewarding consistent verified daily follow-through and habit retention.
+                      Five-level streak progression system rewarding consistent verified daily follow-through and habit retention.
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
-                    <dt className="font-bold text-ink mb-1">Data & Privacy</dt>
+                    <dt className="font-bold text-ink mb-1">Data Privacy & Security</dt>
                     <dd className="text-ink-soft leading-relaxed">
-                      256-bit SSL encrypted storage. Verification photos are kept private and never shared publicly or sold.
+                      256-bit SSL encrypted storage. Verification photos are private, GDPR/CCPA compliant, and never used to train public AI models.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Developer & Provenance</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Designed and built by Daniel (Solo Founder & Developer, Clockitt) for high-accountability productivity.
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-card/60 p-4 border border-border/60">
+                    <dt className="font-bold text-ink mb-1">Freshness & Review</dt>
+                    <dd className="text-ink-soft leading-relaxed">
+                      Version: Early Access (v1.0) • Specification & methodology verified: September 2026.
                     </dd>
                   </div>
                 </dl>

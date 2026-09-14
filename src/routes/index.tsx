@@ -124,35 +124,49 @@ function Index() {
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     const value = email.trim().toLowerCase();
-    if (!value.includes("@") || value.length > 255) {
+    if (!value.includes("@") || !value.includes(".") || value.length > 255) {
       setError("Please enter a valid email address.");
       return;
     }
     setSubmitting(true);
     setError(null);
+
     try {
+      // 1. Try server function first (triggers transactional welcome email)
       const result = await joinWaitlist({ data: { email: value } });
-      if (!result.ok) {
-        const { error: directError } = await supabase
-          .from("waitlist_signups")
-          .insert({ email: value });
-        if (directError && directError.code !== "23505") {
-          setError("Something went wrong. Please try again.");
-          return;
-        }
+      if (result?.ok) {
+        setJoined(true);
+        return;
+      }
+
+      console.warn("Server function returned non-ok, trying direct client insert:", result);
+
+      // 2. Direct client insert fallback
+      const { error: directError } = await supabase
+        .from("waitlist_signups")
+        .insert({ email: value });
+
+      if (directError && directError.code !== "23505") {
+        console.error("Direct waitlist insert error:", directError);
+        setError("Unable to join the waitlist. Please check your connection and try again.");
+        return;
       }
       setJoined(true);
-    } catch {
+    } catch (err) {
+      console.warn("Server function threw error, attempting direct client insert fallback:", err);
       try {
         const { error: directError } = await supabase
           .from("waitlist_signups")
           .insert({ email: value });
+
         if (directError && directError.code !== "23505") {
-          setError("Something went wrong. Please try again.");
+          console.error("Direct fallback waitlist error:", directError);
+          setError("Unable to join the waitlist. Please check your connection and try again.");
           return;
         }
         setJoined(true);
-      } catch {
+      } catch (fallbackErr) {
+        console.error("Fatal waitlist error:", fallbackErr);
         setError("Something went wrong. Please try again.");
       }
     } finally {

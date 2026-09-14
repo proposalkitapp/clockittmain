@@ -27,11 +27,24 @@ export async function sendEmail({
   text,
   from,
 }: SendEmailOptions): Promise<SendEmailResult> {
-  const apiKey =
-    process.env.RESEND_API_KEY ||
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_RESEND_API_KEY);
-  const defaultFrom = process.env.EMAIL_FROM || "Clockitt <onboarding@resend.dev>";
-  const senderFrom = from || defaultFrom;
+  const rawFrom =
+    from ||
+    process.env.EMAIL_FROM ||
+    (typeof import.meta !== "undefined" && import.meta.env?.VITE_EMAIL_FROM) ||
+    "Clockitt <onboarding@resend.dev>";
+
+  // Ensure sender format is valid for Resend API
+  let senderFrom = rawFrom.trim();
+  if (senderFrom.includes("@gmail.com") || !senderFrom.includes("@")) {
+    senderFrom = "Clockitt <onboarding@resend.dev>";
+  } else if (!senderFrom.includes("<") && senderFrom.includes(" ")) {
+    const parts = senderFrom.split(/\s+/);
+    const emailPart = parts.find((p) => p.includes("@"));
+    const namePart = parts.filter((p) => !p.includes("@")).join(" ");
+    if (emailPart) {
+      senderFrom = namePart ? `${namePart} <${emailPart}>` : emailPart;
+    }
+  }
 
   // If no API key or using test placeholder, simulate dispatch safely
   if (!apiKey || apiKey === "re_test_placeholder_key" || apiKey.includes("placeholder")) {

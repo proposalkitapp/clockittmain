@@ -33,7 +33,10 @@ export function pageMeta({
 }
 
 export function canonical(path: string) {
-  return [{ rel: "canonical" as const, href: `${SITE_URL}${path}` }];
+  return [
+    { rel: "canonical" as const, href: `${SITE_URL}${path}` },
+    { rel: "alternate" as const, href: `https://www.clockitt.app${path}` },
+  ];
 }
 
 export function breadcrumbLd(items: { name: string; path: string }[]) {
@@ -70,7 +73,12 @@ export const organizationLd = {
   },
   description:
     "Clockitt is an AI-powered goal accountability and alarm software company helping users achieve daily habits and finish tasks through verified photo proof.",
-  sameAs: ["https://x.com/clockittapp", "https://tiktok.com/useclockittapp"],
+  sameAs: [
+    "https://www.clockitt.app",
+    "https://clockitt.app",
+    "https://x.com/clockittapp",
+    "https://tiktok.com/useclockittapp",
+  ],
   knowsAbout: [
     "Habit Accountability",
     "Productivity Applications",

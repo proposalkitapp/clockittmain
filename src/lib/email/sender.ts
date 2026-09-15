@@ -27,16 +27,21 @@ export async function sendEmail({
   text,
   from,
 }: SendEmailOptions): Promise<SendEmailResult> {
+  const apiKey =
+    (typeof process !== "undefined" && process.env?.RESEND_API_KEY) ||
+    (typeof import.meta !== "undefined" && (import.meta as any).env?.VITE_RESEND_API_KEY) ||
+    "";
+
   const rawFrom =
     from ||
-    process.env.EMAIL_FROM ||
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_EMAIL_FROM) ||
-    "Clockitt <onboarding@resend.dev>";
+    (typeof process !== "undefined" && process.env?.EMAIL_FROM) ||
+    (typeof import.meta !== "undefined" && (import.meta as any).env?.VITE_EMAIL_FROM) ||
+    "Clockitt <hello@clockitt.app>";
 
   // Ensure sender format is valid for Resend API
   let senderFrom = rawFrom.trim();
   if (senderFrom.includes("@gmail.com") || !senderFrom.includes("@")) {
-    senderFrom = "Clockitt <onboarding@resend.dev>";
+    senderFrom = "Clockitt <hello@clockitt.app>";
   } else if (!senderFrom.includes("<") && senderFrom.includes(" ")) {
     const parts = senderFrom.split(/\s+/);
     const emailPart = parts.find((p) => p.includes("@"));

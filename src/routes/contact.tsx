@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
     meta: pageMeta({
       title: "Contact Clockitt — Get in Touch with the Founder",
       description:
-        "Have a question, feedback, or want to share an idea? Reach out to Clockitt's founder at clockittapp@gmail.com or join our early access waitlist.",
+        "Have a question, feedback, or want to share an idea? Reach out to Clockitt's founder at hello@clockitt.app or join our early access waitlist.",
       path: "/contact",
     }),
     links: canonical("/contact"),
@@ -69,10 +69,10 @@ function ContactPage() {
                 </p>
                 <div className="mt-4 rounded-xl border border-border/60 bg-background/60 p-3.5">
                   <a
-                    href="mailto:clockittapp@gmail.com"
+                    href="mailto:hello@clockitt.app"
                     className="break-all font-semibold text-ink hover:text-amber-deep transition-colors text-sm sm:text-base"
                   >
-                    clockittapp@gmail.com
+                    hello@clockitt.app
                   </a>
                 </div>
                 <p className="mt-3 text-xs text-ink-soft">We&rsquo;ll get back to you as soon as we can.</p>
@@ -80,7 +80,7 @@ function ContactPage() {
 
               <div className="mt-7 pt-4 border-t border-border/60">
                 <a
-                  href="mailto:clockittapp@gmail.com"
+                  href="mailto:hello@clockitt.app"
                   className="cta-gradient inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Send an email <ArrowRight className="ml-2 h-4 w-4" />
@@ -105,7 +105,7 @@ function ContactPage() {
 
               <div className="mt-7 pt-4 border-t border-border/60">
                 <a
-                  href="mailto:clockittapp@gmail.com?subject=Clockitt%20Feedback%20%2F%20Feature%20Idea"
+                  href="mailto:hello@clockitt.app?subject=Clockitt%20Feedback%20%2F%20Feature%20Idea"
                   className="inline-flex w-full items-center justify-center rounded-xl border border-border bg-background/80 px-6 py-3.5 text-sm font-bold text-ink shadow-sm transition-all hover:bg-accent hover:border-amber-deep/40"
                 >
                   Send us your idea <ArrowRight className="ml-2 h-4 w-4" />

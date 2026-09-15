@@ -336,7 +336,7 @@ export function PrivacySections() {
           <li><strong className="text-ink">Access</strong> — You can view your task history, proof photos, and account data within the App at any time.</li>
           <li><strong className="text-ink">Correction</strong> — You can update your display name and email address in the Settings screen.</li>
           <li><strong className="text-ink">Deletion</strong> — You can delete your account from Settings &gt; Delete Account. This permanently removes all your data within 30 days.</li>
-          <li><strong className="text-ink">Data export</strong> — To request a copy of your data, email <a href="mailto:clockittapp@gmail.com" className="text-primary underline font-semibold">clockittapp@gmail.com</a>. We will respond within 30 days.</li>
+          <li><strong className="text-ink">Data export</strong> — To request a copy of your data, email <a href="mailto:hello@clockitt.app" className="text-primary underline font-semibold">hello@clockitt.app</a>. We will respond within 30 days.</li>
           <li><strong className="text-ink">Notification control</strong> — You can disable push notifications at any time in your device settings or in the App settings. Note that disabling notifications will prevent alarms from firing.</li>
           <li><strong className="text-ink">Opt out of communications</strong> — We send very few emails — primarily account-related notices. You can opt out of non-essential communications by contacting us.</li>
         </ul>
@@ -348,7 +348,7 @@ export function PrivacySections() {
           7. Children's Privacy
         </h2>
         <p>
-          Clockitt is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:clockittapp@gmail.com" className="text-primary underline font-semibold">clockittapp@gmail.com</a> and we will delete the information promptly.
+          Clockitt is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:hello@clockitt.app" className="text-primary underline font-semibold">hello@clockitt.app</a> and we will delete the information promptly.
         </p>
         <p>
           Users between 13 and 18 years of age should have parental consent before using Clockitt. Parents are encouraged to monitor their children's use of the App.
@@ -364,7 +364,7 @@ export function PrivacySections() {
           Clockitt is available globally. Your data may be processed and stored on servers located outside your country of residence. By using the App, you consent to the transfer of your data to these servers.
         </p>
         <p>
-          If you are located in the European Economic Area (EEA), United Kingdom, or other regions with data protection laws, you may have additional rights under those laws (including GDPR). To exercise any additional rights, contact us at <a href="mailto:clockittapp@gmail.com" className="text-primary underline font-semibold">clockittapp@gmail.com</a>.
+          If you are located in the European Economic Area (EEA), United Kingdom, or other regions with data protection laws, you may have additional rights under those laws (including GDPR). To exercise any additional rights, contact us at <a href="mailto:hello@clockitt.app" className="text-primary underline font-semibold">hello@clockitt.app</a>.
         </p>
       </section>
 
@@ -396,7 +396,7 @@ export function PrivacySections() {
           11. Contact Us About Privacy
         </h2>
         <div className="rounded-2xl border border-border/70 bg-card/60 p-5 space-y-2 backdrop-blur-md">
-          <p><strong className="text-ink">Email:</strong> <a href="mailto:clockittapp@gmail.com" className="text-primary underline font-medium">clockittapp@gmail.com</a></p>
+          <p><strong className="text-ink">Email:</strong> <a href="mailto:hello@clockitt.app" className="text-primary underline font-medium">hello@clockitt.app</a></p>
           <p><strong className="text-ink">Website:</strong> <a href="https://clockitt.app/privacy" target="_blank" rel="noreferrer noopener" className="text-primary underline font-medium inline-flex items-center gap-1">clockitt.app/privacy <ExternalLink className="h-3 w-3" /></a></p>
           <p><strong className="text-ink">Response time:</strong> Within 30 days for data requests, within 7 days for general inquiries</p>
         </div>

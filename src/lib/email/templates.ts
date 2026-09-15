@@ -180,7 +180,7 @@ export function getWaitlistWelcomeEmail(email: string) {
       <div class="footer">
         <p>© 2026 ${SITE_NAME}. 256-Bit SSL Encrypted • Zero Spam Guarantee.</p>
         <p>You received this email because <strong>${email}</strong> joined the Clockitt waitlist on <a href="${SITE_URL}">${SITE_NAME}</a>.</p>
-        <p><a href="${SITE_URL}/privacy">Privacy Policy</a> &bull; <a href="${SITE_URL}/terms">Terms of Service</a> &bull; <a href="mailto:clockittapp@gmail.com">Support</a></p>
+        <p><a href="${SITE_URL}/privacy">Privacy Policy</a> &bull; <a href="${SITE_URL}/terms">Terms of Service</a> &bull; <a href="mailto:hello@clockitt.app">Support</a></p>
       </div>
     </div>
   </div>
@@ -202,7 +202,7 @@ We'll notify you as soon as the private beta is ready for download on iOS and An
 
 Website: ${SITE_URL}
 Community: https://x.com/clockittapp | https://tiktok.com/useclockittapp
-Support: clockittapp@gmail.com
+Support: hello@clockitt.app
 
 © 2026 Clockitt. All rights reserved.
   `.trim();

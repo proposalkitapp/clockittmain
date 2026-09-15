@@ -479,10 +479,10 @@ function Index() {
                   <span><strong>Data Provenance:</strong> Engineered by the Clockitt Team &bull; Privacy-First Architecture &bull; GDPR &amp; CCPA Compliant</span>
                 </div>
                 <a
-                  href="mailto:clockittapp@gmail.com"
+                  href="mailto:hello@clockitt.app"
                   className="font-semibold text-ink underline hover:text-amber-deep transition-colors"
                 >
-                  Questions? Contact clockittapp@gmail.com &rarr;
+                  Questions? Contact hello@clockitt.app &rarr;
                 </a>
               </div>
             </TiltCard>

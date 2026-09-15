@@ -35,20 +35,53 @@ export type Database = {
         }
         Relationships: []
       }
+      waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          email_sent_at: string | null
+          email_status: string | null
+          id: string
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          email_sent_at?: string | null
+          email_status?: string | null
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          email_sent_at?: string | null
+          email_status?: string | null
+          id?: string
+          source?: string | null
+        }
+        Relationships: []
+      }
       waitlist_signups: {
         Row: {
           created_at: string
           email: string
+          email_sent_at: string | null
+          email_status: string | null
           id: string
         }
         Insert: {
           created_at?: string
           email: string
+          email_sent_at?: string | null
+          email_status?: string | null
           id?: string
         }
         Update: {
           created_at?: string
           email?: string
+          email_sent_at?: string | null
+          email_status?: string | null
           id?: string
         }
         Relationships: []

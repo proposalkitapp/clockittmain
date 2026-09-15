@@ -21,6 +21,8 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as ApiWebhooksResendRouteImport } from './routes/api/webhooks/resend'
+import { Route as ApiWebhooksSupabaseSignupRouteImport } from './routes/api/webhooks/supabase-signup'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -81,6 +83,17 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiWebhooksResendRoute = ApiWebhooksResendRouteImport.update({
+  id: '/api/webhooks/resend',
+  path: '/api/webhooks/resend',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWebhooksSupabaseSignupRoute =
+  ApiWebhooksSupabaseSignupRouteImport.update({
+    id: '/api/webhooks/supabase-signup',
+    path: '/api/webhooks/supabase-signup',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -94,6 +107,8 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/api/webhooks/resend': typeof ApiWebhooksResendRoute
+  '/api/webhooks/supabase-signup': typeof ApiWebhooksSupabaseSignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,6 +122,8 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/api/webhooks/resend': typeof ApiWebhooksResendRoute
+  '/api/webhooks/supabase-signup': typeof ApiWebhooksSupabaseSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,6 +139,8 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/api/webhooks/resend': typeof ApiWebhooksResendRoute
+  '/api/webhooks/supabase-signup': typeof ApiWebhooksSupabaseSignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,6 +156,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/dashboard'
+    | '/api/webhooks/resend'
+    | '/api/webhooks/supabase-signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,6 +171,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/dashboard'
+    | '/api/webhooks/resend'
+    | '/api/webhooks/supabase-signup'
   id:
     | '__root__'
     | '/'
@@ -164,6 +187,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/_authenticated/dashboard'
+    | '/api/webhooks/resend'
+    | '/api/webhooks/supabase-signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -178,6 +203,8 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  ApiWebhooksResendRoute: typeof ApiWebhooksResendRoute
+  ApiWebhooksSupabaseSignupRoute: typeof ApiWebhooksSupabaseSignupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -266,6 +293,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/webhooks/resend': {
+      id: '/api/webhooks/resend'
+      path: '/api/webhooks/resend'
+      fullPath: '/api/webhooks/resend'
+      preLoaderRoute: typeof ApiWebhooksResendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/webhooks/supabase-signup': {
+      id: '/api/webhooks/supabase-signup'
+      path: '/api/webhooks/supabase-signup'
+      fullPath: '/api/webhooks/supabase-signup'
+      preLoaderRoute: typeof ApiWebhooksSupabaseSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -292,6 +333,8 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  ApiWebhooksResendRoute: ApiWebhooksResendRoute,
+  ApiWebhooksSupabaseSignupRoute: ApiWebhooksSupabaseSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -45,7 +45,9 @@ export async function sendBroadcastToWaitlist({
   }
 
   const emails: string[] = Array.from(
-    new Set((rows || []).map((r: { email?: string }) => (r.email || "").trim().toLowerCase())),
+    new Set<string>(
+      (rows || []).map((r: { email?: string }) => (r.email || "").trim().toLowerCase()),
+    ),
   ).filter((e) => e && e.includes("@"));
 
   if (emails.length === 0) {

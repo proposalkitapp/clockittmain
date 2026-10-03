@@ -44,8 +44,8 @@ export async function sendEmail({
     senderFrom = "Clockitt <hello@clockitt.app>";
   } else if (!senderFrom.includes("<") && senderFrom.includes(" ")) {
     const parts = senderFrom.split(/\s+/);
-    const emailPart = parts.find((p) => p.includes("@"));
-    const namePart = parts.filter((p) => !p.includes("@")).join(" ");
+    const emailPart = parts.find((p: string) => p.includes("@"));
+    const namePart = parts.filter((p: string) => !p.includes("@")).join(" ");
     if (emailPart) {
       senderFrom = namePart ? `${namePart} <${emailPart}>` : emailPart;
     }
@@ -94,7 +94,7 @@ export async function sendEmail({
     return {
       success: true,
       mode: "live",
-      messageId: data.id,
+      ...(data.id ? { messageId: data.id } : {}),
     };
   } catch (error) {
     console.error(`[EMAIL_EXCEPTION] Failed to send email to ${to}:`, error);

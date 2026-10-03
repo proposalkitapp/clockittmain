@@ -37,7 +37,7 @@ function ContactPage() {
 
       <main id="main-content" className="flex-1 px-5 py-12 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <Breadcrumbs items={[{ label: "Contact" }]} />
+          <Breadcrumbs current="Contact" />
 
           {/* Header */}
           <div className="mt-8 max-w-3xl">

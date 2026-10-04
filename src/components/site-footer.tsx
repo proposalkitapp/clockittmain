@@ -14,11 +14,11 @@ export function SiteFooter() {
             <Link to="/" className="flex items-center gap-2">
               <img
                 src={mascot}
-                alt="Clockitt rooster mascot logo"
-                width={28}
+                alt="Clockitt penguin mascot logo"
+                width={21}
                 height={28}
                 loading="lazy"
-                className="h-7 w-7"
+                className="h-7 w-auto shrink-0 object-contain"
               />
               <Wordmark className="text-lg" />
             </Link>

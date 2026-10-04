@@ -185,7 +185,7 @@ function Index() {
             
             {/* Interactive 3D Mascot Floating Hero */}
             <div className="mx-auto mb-6 w-fit">
-              <Floating3DMascot src={mascot} alt="Clockitt rooster mascot" />
+              <Floating3DMascot src={mascot} alt="Clockitt penguin mascot" />
             </div>
 
             {/* 3D Glass Badge CTA */}

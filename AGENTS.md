@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Brand mascot images beside wordmarks must preserve their natural aspect ratio and must not flex-shrink, to prevent compressed header and footer branding.

@@ -1,7 +1,6 @@
 # Roadmap
 
 - [x] Fix all typecheck/build errors in the preview
-- [ ] Rebrand waitlist page: new logo (icon) + penguin mascot from uploads, remove old logo/mascot completely
-- [ ] Repaint page to navy blue + flame orange brand palette (match new logo), keep layout/content/CTA
-- [ ] Use uploaded assets exactly as provided (no edits); app-served images as real files in public/ (Vercel)
-- [ ] Verify in browser (desktop + mobile) and typecheck
+- [x] Complete remaining penguin image descriptions and flame-orange glow cleanup
+- [x] Preserve header and footer mascot proportions beside the wordmark
+- [x] Verify the existing waitlist page in desktop and mobile previews and check automatic build results

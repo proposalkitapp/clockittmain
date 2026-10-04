@@ -9,7 +9,7 @@ const mascot = "/clockitt-mascot.png";
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`font-extrabold uppercase tracking-[0.18em] text-ink ${className}`}>
+    <span className={`shrink-0 whitespace-nowrap font-extrabold uppercase tracking-[0.18em] text-ink ${className}`}>
       Clockitt
     </span>
   );
@@ -69,10 +69,10 @@ export function SiteHeader() {
         >
           <img
             src={mascot}
-            alt="Clockitt rooster mascot logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            alt="Clockitt penguin mascot logo"
+            width={30}
+            height={40}
+            className="h-10 w-auto shrink-0 object-contain"
           />
           <Wordmark className="text-base sm:text-lg" />
         </Link>
